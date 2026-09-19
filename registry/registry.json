@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "repo": "open-coesione",
-  "source_repo": "open-coesione",
+  "source_repo": "dataciviclab/open-coesione",
   "updated_at": "2026-09-19",
   "datasets": [
     {
@@ -62,7 +62,7 @@
         {
           "name": "VALORE_PROGRAMMATO",
           "type": "DOUBLE",
-          "role": "dimension",
+          "role": "metric",
           "description": "",
           "semantic_type": "target_value"
         },
@@ -443,6 +443,54 @@
           "description": ""
         },
         {
+          "name": "OC_COD_CATEGORIA_SPESA",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "OC_DESCR_CATEGORIA_SPESA",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "OC_ARTICOLAZIONE_PROGRAMMA",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "OC_COD_ARTICOLAZ_PROGRAMMA",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "OC_DESCR_ARTICOLAZ_PROGRAMMA",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "OC_SUBARTICOLAZIONE_PROGRAMMA",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "OC_COD_SUBARTICOLAZ_PROGRAMMA",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
+          "name": "OC_DESCR_SUBARTICOLAZ_PROGRAMMA",
+          "type": "VARCHAR",
+          "role": "dimension",
+          "description": ""
+        },
+        {
           "name": "CUP_COD_NATURA",
           "type": "VARCHAR",
           "role": "dimension",
@@ -661,6 +709,12 @@
           "description": ""
         },
         {
+          "name": "COSTO_RENDICONTABILE_UE",
+          "type": "DOUBLE",
+          "role": "metric",
+          "description": ""
+        },
+        {
           "name": "IMPEGNI",
           "type": "DOUBLE",
           "role": "metric",
@@ -680,6 +734,12 @@
         },
         {
           "name": "OC_TOT_PAGAMENTI_BENEFICIARI",
+          "type": "DOUBLE",
+          "role": "metric",
+          "description": ""
+        },
+        {
+          "name": "OC_TOT_PAGAMENTI_RENDICONTAB_UE",
           "type": "DOUBLE",
           "role": "metric",
           "description": ""
@@ -712,7 +772,7 @@
         {
           "name": "PROGRAMMATO_INDICATORE_1",
           "type": "DOUBLE",
-          "role": "dimension",
+          "role": "metric",
           "description": "",
           "semantic_type": "target_value"
         },
@@ -1008,21 +1068,26 @@
       "detail": "anno 2026 — mart: si",
       "action": "",
       "run": {
-        "run_id": "20260918T222326Z_4bc0bdb8",
+        "run_id": "20260919T131341Z_66aa6a99",
         "year": 2026,
         "status": "SUCCESS",
         "quality_score": {
+          "raw": 100,
+          "clean": 100,
           "mart": 90
         },
         "output_rows": {
+          "clean": 3670364,
           "mart": 39
         },
         "output_bytes": {
+          "raw": 13061353,
+          "clean": 9215076,
           "mart": 3586
         },
-        "started_at": "2026-09-18T22:23:26.759922+00:00",
-        "finished_at": "2026-09-18T22:23:27.601389+00:00",
-        "duration_seconds": 0.841
+        "started_at": "2026-09-19T13:13:41.871477+00:00",
+        "finished_at": "2026-09-19T13:13:49.007904+00:00",
+        "duration_seconds": 7.136
       }
     },
     {
@@ -1033,21 +1098,26 @@
       "detail": "anno 2026 — mart: si",
       "action": "",
       "run": {
-        "run_id": "20260918T221958Z_63a38d86",
+        "run_id": "20260919T131350Z_1ff8298e",
         "year": 2026,
         "status": "SUCCESS",
         "quality_score": {
+          "raw": 100,
+          "clean": 95,
           "mart": 90
         },
         "output_rows": {
+          "clean": 2431641,
           "mart": 8446
         },
         "output_bytes": {
-          "mart": 75170
+          "raw": 57529197,
+          "clean": 54581735,
+          "mart": 75154
         },
-        "started_at": "2026-09-18T22:19:58.606941+00:00",
-        "finished_at": "2026-09-18T22:19:59.238909+00:00",
-        "duration_seconds": 0.632
+        "started_at": "2026-09-19T13:13:50.449454+00:00",
+        "finished_at": "2026-09-19T13:13:58.844909+00:00",
+        "duration_seconds": 8.395
       }
     },
     {
@@ -1058,21 +1128,26 @@
       "detail": "anno 2026 — mart: si",
       "action": "",
       "run": {
-        "run_id": "20260918T222150Z_232947c3",
+        "run_id": "20260919T131400Z_515fe5cd",
         "year": 2026,
         "status": "SUCCESS",
         "quality_score": {
+          "raw": 100,
+          "clean": 100,
           "mart": 90
         },
         "output_rows": {
+          "clean": 5616088,
           "mart": 9493
         },
         "output_bytes": {
-          "mart": 245377
+          "raw": 64667132,
+          "clean": 48672646,
+          "mart": 246746
         },
-        "started_at": "2026-09-18T22:21:50.145985+00:00",
-        "finished_at": "2026-09-18T22:21:49.285892+00:00",
-        "duration_seconds": -0.86
+        "started_at": "2026-09-19T13:14:00.145523+00:00",
+        "finished_at": "2026-09-19T13:14:08.764394+00:00",
+        "duration_seconds": 8.619
       }
     },
     {
@@ -1083,21 +1158,26 @@
       "detail": "anno 2026 — mart: si",
       "action": "",
       "run": {
-        "run_id": "20260918T215039Z_c4539846",
+        "run_id": "20260919T131409Z_4f2e5f88",
         "year": 2026,
         "status": "SUCCESS",
         "quality_score": {
+          "raw": 100,
+          "clean": 85,
           "mart": 85
         },
         "output_rows": {
+          "clean": 128450,
           "mart": 1060
         },
         "output_bytes": {
-          "mart": 49745
+          "raw": 17355140,
+          "clean": 9940430,
+          "mart": 49646
         },
-        "started_at": "2026-09-18T21:50:39.245400+00:00",
-        "finished_at": "2026-09-18T21:50:39.672032+00:00",
-        "duration_seconds": 0.427
+        "started_at": "2026-09-19T13:14:09.588670+00:00",
+        "finished_at": "2026-09-19T13:14:14.003538+00:00",
+        "duration_seconds": 4.415
       }
     },
     {
@@ -1108,21 +1188,26 @@
       "detail": "anno 2026 — mart: si",
       "action": "",
       "run": {
-        "run_id": "20260918T205558Z_08685abd",
+        "run_id": "20260919T131414Z_dac94e86",
         "year": 2026,
         "status": "SUCCESS",
         "quality_score": {
+          "raw": 100,
+          "clean": 95,
           "mart": 100
         },
         "output_rows": {
+          "clean": 7195885,
           "mart": 534306
         },
         "output_bytes": {
-          "mart": 11486359
+          "raw": 104288695,
+          "clean": 85928142,
+          "mart": 11586974
         },
-        "started_at": "2026-09-18T20:55:58.365168+00:00",
-        "finished_at": "2026-09-18T20:56:04.889872+00:00",
-        "duration_seconds": 6.525
+        "started_at": "2026-09-19T13:14:14.834487+00:00",
+        "finished_at": "2026-09-19T13:14:33.995542+00:00",
+        "duration_seconds": 19.161
       }
     }
   ],
@@ -1150,78 +1235,6 @@
           "municipality_code": 2
         }
       },
-      "Fondo": {
-        "entity": "Fondo",
-        "label": "Fondo",
-        "datasets": [
-          {
-            "slug": "opencoesione_progetti_esteso",
-            "name": "Opencoesione Progetti Esteso",
-            "column": "FONDO_COMUNITARIO",
-            "semantic_type": "fondo_code"
-          }
-        ],
-        "types": {
-          "fondo_code": 1
-        }
-      },
-      "Indicatore": {
-        "entity": "Indicatore",
-        "label": "Indicatore",
-        "datasets": [
-          {
-            "slug": "opencoesione_indicatori",
-            "name": "Opencoesione Indicatori",
-            "column": "COD_INDICATORE",
-            "semantic_type": "indicatore_code"
-          },
-          {
-            "slug": "opencoesione_progetti_esteso",
-            "name": "Opencoesione Progetti Esteso",
-            "column": "COD_INDICATORE_1",
-            "semantic_type": "indicatore_code"
-          }
-        ],
-        "types": {
-          "indicatore_code": 2
-        }
-      },
-      "Obiettivo": {
-        "entity": "Obiettivo",
-        "label": "Obiettivo",
-        "datasets": [
-          {
-            "slug": "opencoesione_progetti_esteso",
-            "name": "Opencoesione Progetti Esteso",
-            "column": "OC_DESCRIZIONE_PROGRAMMA",
-            "semantic_type": "obiettivo_code"
-          }
-        ],
-        "types": {
-          "obiettivo_code": 1
-        }
-      },
-      "Policy": {
-        "entity": "Policy",
-        "label": "Policy",
-        "datasets": [
-          {
-            "slug": "opencoesione_progetti_esteso",
-            "name": "Opencoesione Progetti Esteso",
-            "column": "OC_TEMA_SINTETICO",
-            "semantic_type": "policy_code"
-          },
-          {
-            "slug": "opencoesione_progetti_esteso",
-            "name": "Opencoesione Progetti Esteso",
-            "column": "COD_OB_TEMATICO",
-            "semantic_type": "policy_code"
-          }
-        ],
-        "types": {
-          "policy_code": 2
-        }
-      },
       "Progetto": {
         "entity": "Progetto",
         "label": "Progetto",
@@ -1235,33 +1248,6 @@
         ],
         "types": {
           "cup_code": 1
-        }
-      },
-      "Programma": {
-        "entity": "Programma",
-        "label": "Programma",
-        "datasets": [
-          {
-            "slug": "opencoesione_pagamenti",
-            "name": "Opencoesione Pagamenti",
-            "column": "CODICE_PROGRAMMA",
-            "semantic_type": "programma_code"
-          },
-          {
-            "slug": "opencoesione_pagamenti",
-            "name": "Opencoesione Pagamenti",
-            "column": "OC_CODICE_PROGRAMMA",
-            "semantic_type": "programma_code"
-          },
-          {
-            "slug": "opencoesione_progetti_esteso",
-            "name": "Opencoesione Progetti Esteso",
-            "column": "OC_CODICE_PROGRAMMA",
-            "semantic_type": "programma_code"
-          }
-        ],
-        "types": {
-          "programma_code": 3
         }
       },
       "Regione": {
@@ -1285,15 +1271,69 @@
           "region_code": 2
         }
       },
-      "Target": {
-        "entity": "Target",
-        "label": "Target",
+      "Sconosciuto": {
+        "entity": "Sconosciuto",
+        "label": "Sconosciuto",
         "datasets": [
+          {
+            "slug": "opencoesione_indicatori",
+            "name": "Opencoesione Indicatori",
+            "column": "COD_INDICATORE",
+            "semantic_type": "indicatore_code"
+          },
           {
             "slug": "opencoesione_indicatori",
             "name": "Opencoesione Indicatori",
             "column": "VALORE_PROGRAMMATO",
             "semantic_type": "target_value"
+          },
+          {
+            "slug": "opencoesione_pagamenti",
+            "name": "Opencoesione Pagamenti",
+            "column": "CODICE_PROGRAMMA",
+            "semantic_type": "programma_code"
+          },
+          {
+            "slug": "opencoesione_pagamenti",
+            "name": "Opencoesione Pagamenti",
+            "column": "OC_CODICE_PROGRAMMA",
+            "semantic_type": "programma_code"
+          },
+          {
+            "slug": "opencoesione_progetti_esteso",
+            "name": "Opencoesione Progetti Esteso",
+            "column": "OC_TEMA_SINTETICO",
+            "semantic_type": "policy_code"
+          },
+          {
+            "slug": "opencoesione_progetti_esteso",
+            "name": "Opencoesione Progetti Esteso",
+            "column": "FONDO_COMUNITARIO",
+            "semantic_type": "fondo_code"
+          },
+          {
+            "slug": "opencoesione_progetti_esteso",
+            "name": "Opencoesione Progetti Esteso",
+            "column": "OC_CODICE_PROGRAMMA",
+            "semantic_type": "programma_code"
+          },
+          {
+            "slug": "opencoesione_progetti_esteso",
+            "name": "Opencoesione Progetti Esteso",
+            "column": "OC_DESCRIZIONE_PROGRAMMA",
+            "semantic_type": "obiettivo_code"
+          },
+          {
+            "slug": "opencoesione_progetti_esteso",
+            "name": "Opencoesione Progetti Esteso",
+            "column": "COD_OB_TEMATICO",
+            "semantic_type": "policy_code"
+          },
+          {
+            "slug": "opencoesione_progetti_esteso",
+            "name": "Opencoesione Progetti Esteso",
+            "column": "COD_INDICATORE_1",
+            "semantic_type": "indicatore_code"
           },
           {
             "slug": "opencoesione_progetti_esteso",
@@ -1303,37 +1343,16 @@
           }
         ],
         "types": {
-          "target_value": 2
+          "indicatore_code": 2,
+          "target_value": 2,
+          "programma_code": 3,
+          "policy_code": 2,
+          "fondo_code": 1,
+          "obiettivo_code": 1
         }
       }
     },
     "bridges": [
-      {
-        "from": {
-          "entity": "Indicatore",
-          "dataset": "opencoesione_indicatori",
-          "via": "indicatore_code"
-        },
-        "to": {
-          "entity": "Progetto",
-          "bridge": "pnrr_indicatori_target",
-          "on": "cup",
-          "semantic_type": "cup_code"
-        }
-      },
-      {
-        "from": {
-          "entity": "Programma",
-          "dataset": "opencoesione_pagamenti",
-          "via": "programma_code"
-        },
-        "to": {
-          "entity": "Progetto",
-          "bridge": "opencoesione_progetti_esteso",
-          "on": "CUP",
-          "semantic_type": "cup_code"
-        }
-      },
       {
         "from": {
           "entity": "Progetto",
@@ -1345,32 +1364,6 @@
           "bridge": "anac_cup",
           "on": "cup",
           "semantic_type": "municipality_code"
-        }
-      },
-      {
-        "from": {
-          "entity": "Programma",
-          "dataset": "opencoesione_progetti_esteso",
-          "via": "programma_code"
-        },
-        "to": {
-          "entity": "Progetto",
-          "bridge": "opencoesione_progetti_esteso",
-          "on": "CUP",
-          "semantic_type": "cup_code"
-        }
-      },
-      {
-        "from": {
-          "entity": "Indicatore",
-          "dataset": "opencoesione_progetti_esteso",
-          "via": "indicatore_code"
-        },
-        "to": {
-          "entity": "Progetto",
-          "bridge": "pnrr_indicatori_target",
-          "on": "cup",
-          "semantic_type": "cup_code"
         }
       }
     ]
