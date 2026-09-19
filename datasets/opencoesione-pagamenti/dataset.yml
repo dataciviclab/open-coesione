@@ -1,0 +1,44 @@
+root: "../../out"
+schema_version: 1
+
+dataset:
+  name: "opencoesione_pagamenti"
+  source_id: "opencoesione"
+  tags: [finanza-pubblica, opencoesione, pagamenti, flussi-cassa]
+  category: finanza-pubblica
+  years: [2026]
+  time_coverage:
+    start_year: 2007
+    end_year: 2027
+
+raw:
+  sources:
+    - name: "pagamenti_parquet"
+      type: "http_file"
+      args:
+        url: "https://opencoesione.gov.it/it/opendata/pagamenti.parquet"
+        filename: "pagamenti.parquet"
+      primary: true
+
+clean:
+  sql: "sql/clean.sql"
+  read:
+    source: config_only
+    mode: latest
+  required_columns:
+    - COD_LOCALE_PROGETTO
+    - OC_DATA_PAGAMENTI
+    - TOT_PAGAMENTI
+  validate:
+    not_null: [COD_LOCALE_PROGETTO]
+    min_rows: 5000000
+
+mart:
+  tables:
+    - name: "mart_flusso_cassa"
+      sql: "sql/mart_flusso_cassa.sql"
+    - name: "mart_pagamenti_programma"
+      sql: "sql/mart_pagamenti_programma.sql"
+
+validation:
+  fail_on_error: true

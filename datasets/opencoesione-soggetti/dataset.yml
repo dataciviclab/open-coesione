@@ -1,0 +1,56 @@
+root: "../../out"
+schema_version: 1
+
+dataset:
+  name: "opencoesione_soggetti"
+  source_id: "opencoesione"
+  tags: [finanza-pubblica, opencoesione, soggetti, beneficiari]
+  category: finanza-pubblica
+  years: [2026]
+  time_coverage:
+    start_year: 2007
+    end_year: 2027
+
+raw:
+  sources:
+    - name: "soggetti_parquet"
+      type: "http_file"
+      args:
+        url: "https://opencoesione.gov.it/media/open_data/soggetti_20260430.parquet"
+        filename: "soggetti.parquet"
+      primary: true
+
+clean:
+  sql: "sql/clean.sql"
+  required_columns:
+    - COD_LOCALE_PROGETTO
+    - OC_CODICE_FISCALE_SOGG
+    - SOGG_DESCR_RUOLO
+    - DESCR_FORMA_GIURIDICA_SOGG
+    - COD_COMUNE_SEDE_SOGG
+    - OC_COD_ENTE_BDAP
+    - OC_COD_ENTE_IPA
+  read:
+    source: config_only
+    mode: latest
+  validate:
+    not_null: [COD_LOCALE_PROGETTO, OC_CODICE_FISCALE_SOGG]
+    min_rows: 1000000
+
+mart:
+  tables:
+    - name: "mart_beneficiari"
+      sql: "sql/mart_beneficiari.sql"
+  validate:
+    table_rules:
+      mart_beneficiari:
+        required_columns:
+          - codice_fiscale
+          - denominazione
+          - n_progetti
+          - n_progetti_beneficiario
+        primary_key: [codice_fiscale]
+        min_rows: 100000
+
+validation:
+  fail_on_error: true

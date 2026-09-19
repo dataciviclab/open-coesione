@@ -1,0 +1,45 @@
+root: "../../out"
+schema_version: 1
+
+dataset:
+  name: "opencoesione_localizzazioni"
+  source_id: "opencoesione"
+  tags: [finanza-pubblica, opencoesione, localizzazioni, geolocalizzazione]
+  category: finanza-pubblica
+  years: [2026]
+  time_coverage:
+    start_year: 2007
+    end_year: 2027
+
+raw:
+  sources:
+    - name: "localizzazioni_parquet"
+      type: "http_file"
+      args:
+        url: "https://opencoesione.gov.it/it/opendata/localizzazioni.parquet"
+        filename: "localizzazioni.parquet"
+      primary: true
+
+clean:
+  sql: "sql/clean.sql"
+  read:
+    source: config_only
+    mode: latest
+  required_columns:
+    - COD_LOCALE_PROGETTO
+    - DEN_REGIONE
+    - DEN_PROVINCIA
+    - DEN_COMUNE
+  validate:
+    not_null: [COD_LOCALE_PROGETTO]
+    min_rows: 2000000
+
+mart:
+  tables:
+    - name: "mart_territorio"
+      sql: "sql/mart_territorio.sql"
+    - name: "mart_aree_interne"
+      sql: "sql/mart_aree_interne.sql"
+
+validation:
+  fail_on_error: true
