@@ -15,8 +15,10 @@ run:
 	$(TOOLKIT) run
 
 run-all:
-	@find datasets -name dataset.yml | sort > batch.txt; \
-	$(TOOLKIT) run --batch batch.txt
+	@for f in $(DATASETS); do \
+		echo "→ Running $$f"; \
+		$(TOOLKIT) run --config "$$f" || exit 1; \
+	done
 
 clean:
 	rm -rf out/data/_runs out/data/probe out/data/raw out/data/clean out/data/mart out/data/cross .tmp/
