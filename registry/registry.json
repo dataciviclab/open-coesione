@@ -1235,6 +1235,78 @@
           "municipality_code": 2
         }
       },
+      "Fondo": {
+        "entity": "Fondo",
+        "label": "Fondo",
+        "datasets": [
+          {
+            "slug": "opencoesione_progetti_esteso",
+            "name": "Opencoesione Progetti Esteso",
+            "column": "FONDO_COMUNITARIO",
+            "semantic_type": "fondo_code"
+          }
+        ],
+        "types": {
+          "fondo_code": 1
+        }
+      },
+      "Indicatore": {
+        "entity": "Indicatore",
+        "label": "Indicatore",
+        "datasets": [
+          {
+            "slug": "opencoesione_indicatori",
+            "name": "Opencoesione Indicatori",
+            "column": "COD_INDICATORE",
+            "semantic_type": "indicatore_code"
+          },
+          {
+            "slug": "opencoesione_progetti_esteso",
+            "name": "Opencoesione Progetti Esteso",
+            "column": "COD_INDICATORE_1",
+            "semantic_type": "indicatore_code"
+          }
+        ],
+        "types": {
+          "indicatore_code": 2
+        }
+      },
+      "Obiettivo": {
+        "entity": "Obiettivo",
+        "label": "Obiettivo",
+        "datasets": [
+          {
+            "slug": "opencoesione_progetti_esteso",
+            "name": "Opencoesione Progetti Esteso",
+            "column": "OC_DESCRIZIONE_PROGRAMMA",
+            "semantic_type": "obiettivo_code"
+          }
+        ],
+        "types": {
+          "obiettivo_code": 1
+        }
+      },
+      "Policy": {
+        "entity": "Policy",
+        "label": "Policy",
+        "datasets": [
+          {
+            "slug": "opencoesione_progetti_esteso",
+            "name": "Opencoesione Progetti Esteso",
+            "column": "OC_TEMA_SINTETICO",
+            "semantic_type": "policy_code"
+          },
+          {
+            "slug": "opencoesione_progetti_esteso",
+            "name": "Opencoesione Progetti Esteso",
+            "column": "COD_OB_TEMATICO",
+            "semantic_type": "policy_code"
+          }
+        ],
+        "types": {
+          "policy_code": 2
+        }
+      },
       "Progetto": {
         "entity": "Progetto",
         "label": "Progetto",
@@ -1248,6 +1320,33 @@
         ],
         "types": {
           "cup_code": 1
+        }
+      },
+      "Programma": {
+        "entity": "Programma",
+        "label": "Programma",
+        "datasets": [
+          {
+            "slug": "opencoesione_pagamenti",
+            "name": "Opencoesione Pagamenti",
+            "column": "CODICE_PROGRAMMA",
+            "semantic_type": "programma_code"
+          },
+          {
+            "slug": "opencoesione_pagamenti",
+            "name": "Opencoesione Pagamenti",
+            "column": "OC_CODICE_PROGRAMMA",
+            "semantic_type": "programma_code"
+          },
+          {
+            "slug": "opencoesione_progetti_esteso",
+            "name": "Opencoesione Progetti Esteso",
+            "column": "OC_CODICE_PROGRAMMA",
+            "semantic_type": "programma_code"
+          }
+        ],
+        "types": {
+          "programma_code": 3
         }
       },
       "Regione": {
@@ -1271,69 +1370,15 @@
           "region_code": 2
         }
       },
-      "Sconosciuto": {
-        "entity": "Sconosciuto",
-        "label": "Sconosciuto",
+      "Target": {
+        "entity": "Target",
+        "label": "Target",
         "datasets": [
-          {
-            "slug": "opencoesione_indicatori",
-            "name": "Opencoesione Indicatori",
-            "column": "COD_INDICATORE",
-            "semantic_type": "indicatore_code"
-          },
           {
             "slug": "opencoesione_indicatori",
             "name": "Opencoesione Indicatori",
             "column": "VALORE_PROGRAMMATO",
             "semantic_type": "target_value"
-          },
-          {
-            "slug": "opencoesione_pagamenti",
-            "name": "Opencoesione Pagamenti",
-            "column": "CODICE_PROGRAMMA",
-            "semantic_type": "programma_code"
-          },
-          {
-            "slug": "opencoesione_pagamenti",
-            "name": "Opencoesione Pagamenti",
-            "column": "OC_CODICE_PROGRAMMA",
-            "semantic_type": "programma_code"
-          },
-          {
-            "slug": "opencoesione_progetti_esteso",
-            "name": "Opencoesione Progetti Esteso",
-            "column": "OC_TEMA_SINTETICO",
-            "semantic_type": "policy_code"
-          },
-          {
-            "slug": "opencoesione_progetti_esteso",
-            "name": "Opencoesione Progetti Esteso",
-            "column": "FONDO_COMUNITARIO",
-            "semantic_type": "fondo_code"
-          },
-          {
-            "slug": "opencoesione_progetti_esteso",
-            "name": "Opencoesione Progetti Esteso",
-            "column": "OC_CODICE_PROGRAMMA",
-            "semantic_type": "programma_code"
-          },
-          {
-            "slug": "opencoesione_progetti_esteso",
-            "name": "Opencoesione Progetti Esteso",
-            "column": "OC_DESCRIZIONE_PROGRAMMA",
-            "semantic_type": "obiettivo_code"
-          },
-          {
-            "slug": "opencoesione_progetti_esteso",
-            "name": "Opencoesione Progetti Esteso",
-            "column": "COD_OB_TEMATICO",
-            "semantic_type": "policy_code"
-          },
-          {
-            "slug": "opencoesione_progetti_esteso",
-            "name": "Opencoesione Progetti Esteso",
-            "column": "COD_INDICATORE_1",
-            "semantic_type": "indicatore_code"
           },
           {
             "slug": "opencoesione_progetti_esteso",
@@ -1343,16 +1388,37 @@
           }
         ],
         "types": {
-          "indicatore_code": 2,
-          "target_value": 2,
-          "programma_code": 3,
-          "policy_code": 2,
-          "fondo_code": 1,
-          "obiettivo_code": 1
+          "target_value": 2
         }
       }
     },
     "bridges": [
+      {
+        "from": {
+          "entity": "Indicatore",
+          "dataset": "opencoesione_indicatori",
+          "via": "indicatore_code"
+        },
+        "to": {
+          "entity": "Progetto",
+          "bridge": "pnrr_indicatori_target",
+          "on": "cup",
+          "semantic_type": "cup_code"
+        }
+      },
+      {
+        "from": {
+          "entity": "Programma",
+          "dataset": "opencoesione_pagamenti",
+          "via": "programma_code"
+        },
+        "to": {
+          "entity": "Progetto",
+          "bridge": "opencoesione_progetti_esteso",
+          "on": "CUP",
+          "semantic_type": "cup_code"
+        }
+      },
       {
         "from": {
           "entity": "Progetto",
@@ -1364,6 +1430,32 @@
           "bridge": "anac_cup",
           "on": "cup",
           "semantic_type": "municipality_code"
+        }
+      },
+      {
+        "from": {
+          "entity": "Programma",
+          "dataset": "opencoesione_progetti_esteso",
+          "via": "programma_code"
+        },
+        "to": {
+          "entity": "Progetto",
+          "bridge": "opencoesione_progetti_esteso",
+          "on": "CUP",
+          "semantic_type": "cup_code"
+        }
+      },
+      {
+        "from": {
+          "entity": "Indicatore",
+          "dataset": "opencoesione_progetti_esteso",
+          "via": "indicatore_code"
+        },
+        "to": {
+          "entity": "Progetto",
+          "bridge": "pnrr_indicatori_target",
+          "on": "cup",
+          "semantic_type": "cup_code"
         }
       }
     ]
