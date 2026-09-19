@@ -16,7 +16,7 @@ raw:
     - name: "progetti_esteso_parquet"
       type: "http_file"
       args:
-        url: "https://opencoesione.gov.it/it/opendata/progetti_esteso_2021-2027.parquet"
+        url: "https://opencoesione.gov.it/media/open_data//progetti_esteso_2021-2027_20260430.parquet"
         filename: "progetti_esteso_2021-2027.parquet"
       primary: true
 
