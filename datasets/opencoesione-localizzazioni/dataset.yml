@@ -16,7 +16,7 @@ raw:
     - name: "localizzazioni_parquet"
       type: "http_file"
       args:
-        url: "https://opencoesione.gov.it/media/open_data//localizzazioni_20260430.parquet"
+        url: "https://opencoesione.gov.it/media/open_data/localizzazioni_20260630.parquet"
         filename: "localizzazioni.parquet"
       primary: true
 

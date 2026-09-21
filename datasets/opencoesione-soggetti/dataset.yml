@@ -16,7 +16,7 @@ raw:
     - name: "soggetti_parquet"
       type: "http_file"
       args:
-        url: "https://opencoesione.gov.it/media/open_data/soggetti_20260430.parquet"
+        url: "https://opencoesione.gov.it/media/open_data/soggetti_20260630.parquet"
         filename: "soggetti.parquet"
       primary: true
 

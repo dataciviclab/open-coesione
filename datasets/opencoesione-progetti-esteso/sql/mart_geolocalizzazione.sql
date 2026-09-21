@@ -2,7 +2,7 @@
 SELECT
   DEN_REGIONE as regione,
   DEN_PROVINCIA as provincia,
-  OC_MACROAREA as macroarea,
+  OC_MACROAREA_PROGETTO as macroarea,
   COUNT(*) as n_progetti,
   SUM(FINANZ_UE) as finanz_ue_tot,
   SUM(FINANZ_TOTALE_PUBBLICO) as finanz_tot_pub,

@@ -2,7 +2,7 @@
 SELECT
   OC_DESCR_CICLO as ciclo,
   OC_TEMA_SINTETICO as tema,
-  OC_MACROAREA as macroarea,
+  OC_MACROAREA_PROGETTO as macroarea,
   COUNT(*) as n_progetti,
   COUNT(DISTINCT COD_GRANDE_PROGETTO) FILTER (WHERE COD_GRANDE_PROGETTO IS NOT NULL AND COD_GRANDE_PROGETTO <> '') as n_grandi_progetti,
   SUM(FINANZ_UE) as finanz_ue_tot,

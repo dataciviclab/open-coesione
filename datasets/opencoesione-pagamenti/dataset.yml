@@ -16,7 +16,7 @@ raw:
     - name: "pagamenti_parquet"
       type: "http_file"
       args:
-        url: "https://opencoesione.gov.it/media/open_data//pagamenti_20260430.parquet"
+        url: "https://opencoesione.gov.it/media/open_data/pagamenti_20260630.parquet"
         filename: "pagamenti.parquet"
       primary: true
 
