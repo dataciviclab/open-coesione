@@ -9,11 +9,18 @@ Guida alla contribuzione per il dataset OpenCoesione.
 git clone https://github.com/dataciviclab/open-coesione.git
 cd open-coesione
 
-# Installa toolkit (se non presente)
-pip install dataciviclab-toolkit
+# Setup locale
+git clone https://github.com/dataciviclab/open-coesione.git
+cd open-coesione
+
+# Installa il repo in editable con toolkit (extra pipeline)
+pip install -e ".[pipeline]"
+
+# Preflight su tutte le config
+make check
 
 # Esegui tutti i dataset
-make run
+make run-all
 ```
 
 ## Struttura

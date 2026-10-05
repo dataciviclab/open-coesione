@@ -2,15 +2,17 @@
 
 **Dove finiscono i fondi europei in Italia? Chi li riceve? E con quali risultati?**
 
-OpenCoesione raccoglie i dati di monitoraggio di tutti i progetti finanziati dalle
-politiche di coesione in Italia dal 2007 al 2027: progetti, soggetti, localizzazioni,
+OpenCoesione raccoglie i dati di monitoraggio dei progetti finanziati dalle
+politiche di coesione in Italia (cicli 2000-2027 a seconda del dataset):
+progetti (hub storico), progetti estesi 2021-2027, soggetti, localizzazioni,
 pagamenti e indicatori di realizzazione. Ogni riga è un euro pubblico tracciabile.
 
 ## Cosa contiene
 
 | Dataset | Cosa | Righe | Anni |
 |---|---|---|---|
-| `opencoesione_progetti_esteso` | Progetti con 77 colonne: finanziamenti, programmi, indicatori | 128K | 2021-2027 |
+| `opencoesione_progetti` | Base dati progetti 4 cicli (hub di join) + mart tema×ciclo | 2,3M | 2000-2027 |
+| `opencoesione_progetti_esteso` | Progetti 2021-2027 con programmi, geografia fine, ruoli CF | 130K | 2021-2027 |
 | `opencoesione_soggetti` | Beneficiari, programmatori, attuatori con CF e forma giuridica | 7.2M | 2007-2027 |
 | `opencoesione_localizzazioni` | Geolocalizzazione: regione, provincia, comune, SLL, aree interne | 2.4M | 2007-2027 |
 | `opencoesione_pagamenti` | Storico pagamenti per data e programma | 5.6M | 2007-2027 |
@@ -42,37 +44,38 @@ toolkit_query run "SELECT * FROM opencoesione_soggetti LIMIT 10"
 ```bash
 git clone https://github.com/dataciviclab/open-coesione.git
 cd open-coesione
-pip install -r requirements.txt
+pip install -e ".[pipeline]"
 make run
 ```
 
 ### 3. GCS
 
-I parquet clean e mart sono su `gs://dataciviclab-clean/opencoesione*/`.
+I parquet clean e mart sono su `gs://dataciviclab-clean/open-coesione/` e `gs://dataciviclab-mart/open-coesione/`.
 
 ## Pipeline
 
 ```
-RAW (parquet OpenCoesione) → CLEAN (77/21/15/9/9 colonne) → MART (10 tabelle)
+RAW (parquet OpenCoesione) → CLEAN → MART
 ```
 
-| Mart | Cosa aggrega |
-|---|---|
-| `mart_tema_ciclo` | Finanziamenti per tema × ciclo × macroarea |
-| `mart_geolocalizzazione` | Progetti per regione × provincia |
-| `mart_programmi` | Progetti per programma operativo |
-| `mart_beneficiari` | Beneficiari unici per CF con ruoli |
-| `mart_territorio` | Progetti per comune |
-| `mart_aree_interne` | Progetti in aree interne |
-| `mart_flusso_cassa` | Pagamenti per anno |
-| `mart_pagamenti_programma` | Pagamenti per programma |
-| `mart_valutazione` | Rapporto programmato/realizzato |
-| `mart_indicatori_tipo` | Indicatori per tipo/unità misura |
+| Mart | Dataset | Cosa aggrega |
+|---|---|---|
+| `mart_tema_ciclo` | progetti | Finanziamenti per tema × ciclo × macroarea (4 cicli) |
+| `mart_tema_ciclo` | progetti_esteso | Idem sul ciclo 2021-2027 (universo esteso) |
+| `mart_geolocalizzazione` | progetti_esteso | Progetti per regione × provincia (2021-27) |
+| `mart_programmi` | progetti_esteso | Progetti per programma operativo |
+| `mart_beneficiari` | soggetti | Beneficiari unici per CF con ruoli |
+| `mart_territorio` | localizzazioni | Localizzazioni per comune |
+| `mart_aree_interne` | localizzazioni | Localizzazioni in aree interne |
+| `mart_flusso_cassa` | pagamenti | Pagamenti per anno |
+| `mart_pagamenti_programma` | pagamenti | Pagamenti per programma |
+| `mart_valutazione` | indicatori | Rapporto programmato/realizzato per tipo |
+| `mart_indicatori_tipo` | indicatori | Indicatori per tipo/unità misura |
 
 ## Fonte
 
 [OpenCoesione](https://opencoesione.gov.it) — PCM Dipartimento Politiche di Coesione.
-Parquet aggiornati al 30/04/2026. Licenza CC BY 4.0.
+Parquet di riferimento: dump al 30/06/2026. Licenza CC BY 4.0.
 
 ## License
 
