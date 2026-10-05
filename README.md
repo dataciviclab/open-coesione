@@ -11,12 +11,14 @@ pagamenti e indicatori di realizzazione. Ogni riga è un euro pubblico tracciabi
 
 | Dataset | Cosa | Righe | Anni |
 |---|---|---|---|
-| `opencoesione_progetti` | Base dati progetti 4 cicli (hub di join) + mart tema×ciclo | 2,3M | 2000-2027 |
+| `opencoesione_progetti` | Base dati progetti 4 cicli (hub di join) + mart tema/ciclo/stato/SLL | 2,3M | 2000-2027 |
 | `opencoesione_progetti_esteso` | Progetti 2021-2027 con programmi, geografia fine, ruoli CF | 130K | 2021-2027 |
-| `opencoesione_soggetti` | Beneficiari, programmatori, attuatori con CF e forma giuridica | 7.2M | 2007-2027 |
-| `opencoesione_localizzazioni` | Geolocalizzazione: regione, provincia, comune, SLL, aree interne | 2.4M | 2007-2027 |
-| `opencoesione_pagamenti` | Storico pagamenti per data e programma | 5.6M | 2007-2027 |
-| `opencoesione_indicatori` | Valori programmati vs realizzati per progetto | 3.7M | 2007-2027 |
+| `opencoesione_soggetti` | Beneficiari/attuatori + mart denaro per CF (allocazione) | 7.2M | 2007-2027 |
+| `opencoesione_localizzazioni` | Geolocalizzazione + mart comune con denaro attribuito | 2.4M | 2007-2027 |
+| `opencoesione_pagamenti` | Storico pagamenti + avanzamento per stato/ciclo | 5.6M | 2007-2027 |
+| `opencoesione_indicatori` | Valori programmati vs realizzati per tipo×unità | 3.7M | 2007-2027 |
+| `opencoesione_fasi` | Fasi procedurali e ritardo previsto vs effettivo | 4.9M | 2000-2027 |
+| `opencoesione_impegni` | Serie storica impegni per anno e ciclo | 2.7M | 1990-2027 |
 
 ## Esempi di domande
 
@@ -61,16 +63,31 @@ RAW (parquet OpenCoesione) → CLEAN → MART
 | Mart | Dataset | Cosa aggrega |
 |---|---|---|
 | `mart_tema_ciclo` | progetti | Finanziamenti per tema × ciclo × macroarea (4 cicli) |
+| `mart_stato_ciclo` | progetti | Avanzamento per ciclo × stato progetto |
+| `mart_sll` | progetti | Finanziamenti per SLL (geografia storica) |
+| `mart_ciclo` | progetti | KPI sintetici per ciclo (panoramica) |
 | `mart_tema_ciclo` | progetti_esteso | Idem sul ciclo 2021-2027 (universo esteso) |
 | `mart_geolocalizzazione` | progetti_esteso | Progetti per regione × provincia (2021-27) |
 | `mart_programmi` | progetti_esteso | Progetti per programma operativo |
-| `mart_beneficiari` | soggetti | Beneficiari unici per CF con ruoli |
-| `mart_territorio` | localizzazioni | Localizzazioni per comune |
-| `mart_aree_interne` | localizzazioni | Localizzazioni in aree interne |
+| `mart_comune` | progetti_esteso | Denaro per comune (2021-27, comune anagrafico) |
+| `mart_stato_tema` | progetti_esteso | Avanzamento 2021-27 per tema × stato |
+| `mart_beneficiari` | soggetti | Beneficiari unici per CF con conteggi |
+| `mart_beneficiari_finanziamenti` | soggetti | Denaro per CF (allocazione tra co-beneficiari) |
+| `mart_soggetti_ruolo` | soggetti | Struttura soggetti per ruolo × forma giuridica |
+| `mart_territorio` | localizzazioni | Localizzazioni per comune (n progetti distinti) |
+| `mart_aree_interne` | localizzazioni | Aree interne per COD_AREA_INTERNA |
+| `mart_regione_provincia` | localizzazioni | Carico per regione/provincia |
+| `mart_comune_finanziamenti` | localizzazioni | Denaro per comune storico (attribuzione multi-sede) |
+| `mart_territorio_finanziamenti` | localizzazioni | Denaro per macroarea × ciclo |
 | `mart_flusso_cassa` | pagamenti | Pagamenti per anno |
 | `mart_pagamenti_programma` | pagamenti | Pagamenti per programma |
-| `mart_valutazione` | indicatori | Rapporto programmato/realizzato per tipo |
+| `mart_pagamenti_avanzamento` | pagamenti | Cassa per ciclo × stato × anno |
+| `mart_valutazione` | indicatori | Rapporto realizzato/programmato per tipo × unità |
 | `mart_indicatori_tipo` | indicatori | Indicatori per tipo/unità misura |
+| `mart_ritardo_fase` | fasi | Ritardo per fase procedurale × ciclo |
+| `mart_ritardo_ciclo` | fasi | Sintesi ritardo per ciclo |
+| `mart_impegni_anno` | impegni | Serie storica impegni per anno |
+| `mart_impegni_ciclo` | impegni | Impegni per ciclo × anno |
 
 ## Fonte
 

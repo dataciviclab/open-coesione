@@ -45,6 +45,12 @@ mart:
   tables:
     - name: "mart_tema_ciclo"
       sql: "sql/mart_tema_ciclo.sql"
+    - name: "mart_stato_ciclo"
+      sql: "sql/mart_stato_ciclo.sql"
+    - name: "mart_sll"
+      sql: "sql/mart_sll.sql"
+    - name: "mart_ciclo"
+      sql: "sql/mart_ciclo.sql"
   validate:
     table_rules:
       mart_tema_ciclo:
@@ -57,6 +63,15 @@ mart:
           - costo_coesione
           - pagamenti_tot
         min_rows: 20
+      mart_stato_ciclo:
+        required_columns: [ciclo, stato, n_progetti, finanz_ue_tot]
+        min_rows: 5
+      mart_sll:
+        required_columns: [cod_sll, sll, n_progetti, finanz_ue_tot]
+        min_rows: 20
+      mart_ciclo:
+        required_columns: [ciclo, n_progetti, finanz_ue_tot, costo_coesione]
+        min_rows: 3
 
 validation:
   fail_on_error: true

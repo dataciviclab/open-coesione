@@ -41,6 +41,10 @@ mart:
   tables:
     - name: "mart_beneficiari"
       sql: "sql/mart_beneficiari.sql"
+    - name: "mart_soggetti_ruolo"
+      sql: "sql/mart_soggetti_ruolo.sql"
+    - name: "mart_beneficiari_finanziamenti"
+      sql: "sql/mart_beneficiari_finanziamenti.sql"
   validate:
     table_rules:
       mart_beneficiari:
@@ -51,6 +55,22 @@ mart:
           - n_progetti_beneficiario
         primary_key: [codice_fiscale]
         min_rows: 100000
+      mart_soggetti_ruolo:
+        required_columns: [ruolo, n_relazioni, n_soggetti]
+        min_rows: 5
+      mart_beneficiari_finanziamenti:
+        required_columns:
+          - codice_fiscale
+          - n_progetti_beneficiario
+          - finanz_ue_attribuito
+        primary_key: [codice_fiscale]
+        min_rows: 10000
 
 validation:
   fail_on_error: true
+
+support:
+  - name: "progetti"
+    config: "../opencoesione-progetti/dataset.yml"
+    years: [2026]
+

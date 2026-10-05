@@ -39,6 +39,22 @@ mart:
       sql: "sql/mart_flusso_cassa.sql"
     - name: "mart_pagamenti_programma"
       sql: "sql/mart_pagamenti_programma.sql"
+    - name: "mart_pagamenti_avanzamento"
+      sql: "sql/mart_pagamenti_avanzamento.sql"
+  validate:
+    table_rules:
+      mart_flusso_cassa:
+        required_columns: [anno, totale_pagamenti, n_progetti]
+        min_rows: 10
+      mart_pagamenti_avanzamento:
+        required_columns: [ciclo, stato, anno, totale_pagamenti]
+        min_rows: 20
 
 validation:
   fail_on_error: true
+
+support:
+  - name: "progetti"
+    config: "../opencoesione-progetti/dataset.yml"
+    years: [2026]
+
