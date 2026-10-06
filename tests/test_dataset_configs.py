@@ -45,7 +45,6 @@ def test_dataset_yml_structure(yml: Path) -> None:
 def test_sql_uses_canonical_views(yml: Path) -> None:
     cfg = yaml.safe_load(yml.read_text())
     for layer in ("clean", "mart"):
-        key = "sql" if layer == "clean" else "tables"
         if layer == "clean":
             paths = [yml.parent / cfg["clean"]["sql"]]
         else:
