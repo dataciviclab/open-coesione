@@ -41,7 +41,15 @@ toolkit_dataset overview opencoesione_progetti_esteso
 toolkit_query run "SELECT * FROM opencoesione_soggetti LIMIT 10"
 ```
 
-### 2. Localmente
+### 2. Dashboard Streamilit
+
+```bash
+pip install -e ".[dashboard]"
+# serve anche lab-connectors (da git, vedi dashboard/requirements.txt)
+cd dashboard && streamlit run app.py
+```
+
+### 3. Localmente (pipeline)
 
 ```bash
 git clone https://github.com/dataciviclab/open-coesione.git
@@ -61,7 +69,7 @@ make run-dataset DATASET=opencoesione-progetti-esteso
 make run-all
 ```
 
-### 3. GCS
+### 4. GCS
 
 I parquet clean e mart sono su `gs://dataciviclab-clean/open-coesione/` e `gs://dataciviclab-mart/open-coesione/`.
 
