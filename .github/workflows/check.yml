@@ -5,6 +5,8 @@ on:
     paths:
       - "datasets/**"
       - "support/**"
+      - "scripts/**"
+      - "tests/**"
       - "**/*.py"
       - "**/*.yml"
       - "**/*.yaml"
@@ -35,3 +37,13 @@ jobs:
       install: "pip install -e .\"[dev]\""
       configs: ${{ needs.detect.outputs.dirs }}
       years: "from-config"
+
+  smoke-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: dataciviclab/.github/actions/python-setup@main
+        with:
+          install-extras: "dev"
+      - name: pytest smoke
+        run: pytest tests/ -q

@@ -1,0 +1,60 @@
+root: "../../out"
+schema_version: 1
+
+dataset:
+  name: "opencoesione_impegni"
+  source_id: "opencoesione"
+  tags: [finanza-pubblica, opencoesione, impegni, cassa, serie-storica]
+  category: finanza-pubblica
+  description: >
+    Serie storica degli impegni per progetto — confronto con pagamenti e
+    snapshot IMPEGNI sul layer progetti.
+  years: [2026]
+  time_coverage:
+    start_year: 1990
+    end_year: 2027
+
+raw:
+  sources:
+    - name: "impegni_parquet"
+      type: "http_file"
+      args:
+        url: "https://opencoesione.gov.it/media/open_data/impegni_20260630.parquet"
+        filename: "impegni.parquet"
+      primary: true
+
+clean:
+  sql: "sql/clean.sql"
+  read:
+    source: config_only
+    mode: latest
+  required_columns:
+    - COD_LOCALE_PROGETTO
+    - OC_DATA_IMPEGNI
+    - IMPEGNI
+  validate:
+    not_null: [COD_LOCALE_PROGETTO]
+    min_rows: 1000000
+
+mart:
+  tables:
+    - name: "mart_impegni_anno"
+      sql: "sql/mart_impegni_anno.sql"
+    - name: "mart_impegni_ciclo"
+      sql: "sql/mart_impegni_ciclo.sql"
+  validate:
+    table_rules:
+      mart_impegni_anno:
+        required_columns: [anno, totale_impegni, n_progetti]
+        min_rows: 10
+      mart_impegni_ciclo:
+        required_columns: [ciclo, totale_impegni, n_progetti]
+        min_rows: 2
+
+validation:
+  fail_on_error: true
+
+support:
+  - name: "progetti"
+    config: "../opencoesione-progetti/dataset.yml"
+    years: [2026]

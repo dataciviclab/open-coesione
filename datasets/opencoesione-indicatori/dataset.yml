@@ -40,6 +40,14 @@ mart:
       sql: "sql/mart_valutazione.sql"
     - name: "mart_indicatori_tipo"
       sql: "sql/mart_indicatori_tipo.sql"
+  validate:
+    table_rules:
+      mart_valutazione:
+        required_columns: [tipo, unita_misura, n_indicatori, rapporto_medio]
+        min_rows: 5
+      mart_indicatori_tipo:
+        required_columns: [tipo, unita_misura, n_indicatori]
+        min_rows: 5
 
 validation:
   fail_on_error: true

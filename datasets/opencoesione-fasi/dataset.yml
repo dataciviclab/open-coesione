@@ -1,0 +1,60 @@
+root: "../../out"
+schema_version: 1
+
+dataset:
+  name: "opencoesione_fasi"
+  source_id: "opencoesione"
+  tags: [finanza-pubblica, opencoesione, fasi, ritardo, avanzamento]
+  category: finanza-pubblica
+  description: >
+    Fasi procedurali dei progetti coesione (previsto vs effettivo) —
+    base per ritardo e timeline di avanzamento.
+  years: [2026]
+  time_coverage:
+    start_year: 2000
+    end_year: 2027
+
+raw:
+  sources:
+    - name: "fasi_parquet"
+      type: "http_file"
+      args:
+        url: "https://opencoesione.gov.it/media/open_data/fasi_20260630.parquet"
+        filename: "fasi.parquet"
+      primary: true
+
+clean:
+  sql: "sql/clean.sql"
+  read:
+    source: config_only
+    mode: latest
+  required_columns:
+    - COD_LOCALE_PROGETTO
+    - OC_COD_FASE
+    - OC_DESCR_FASE
+  validate:
+    not_null: [COD_LOCALE_PROGETTO, OC_COD_FASE]
+    min_rows: 1000000
+
+mart:
+  tables:
+    - name: "mart_ritardo_fase"
+      sql: "sql/mart_ritardo_fase.sql"
+    - name: "mart_ritardo_ciclo"
+      sql: "sql/mart_ritardo_ciclo.sql"
+  validate:
+    table_rules:
+      mart_ritardo_fase:
+        required_columns: [fase, n_fasi, n_progetti]
+        min_rows: 5
+      mart_ritardo_ciclo:
+        required_columns: [ciclo, n_progetti, ritardo_medio_giorni, finanz_ue_in_ritardo]
+        min_rows: 2
+
+validation:
+  fail_on_error: true
+
+support:
+  - name: "progetti"
+    config: "../opencoesione-progetti/dataset.yml"
+    years: [2026]

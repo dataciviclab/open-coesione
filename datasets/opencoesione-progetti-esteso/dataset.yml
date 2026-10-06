@@ -48,6 +48,18 @@ mart:
       sql: "sql/mart_geolocalizzazione.sql"
     - name: "mart_programmi"
       sql: "sql/mart_programmi.sql"
+    - name: "mart_comune"
+      sql: "sql/mart_comune.sql"
+    - name: "mart_stato_tema"
+      sql: "sql/mart_stato_tema.sql"
+  validate:
+    table_rules:
+      mart_comune:
+        required_columns: [regione, provincia, comune, n_progetti, finanz_ue_tot]
+        min_rows: 100
+      mart_stato_tema:
+        required_columns: [tema, stato, n_progetti, finanz_ue_tot]
+        min_rows: 5
 
 validation:
   fail_on_error: true

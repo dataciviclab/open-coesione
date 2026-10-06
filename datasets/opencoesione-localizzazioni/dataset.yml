@@ -40,6 +40,30 @@ mart:
       sql: "sql/mart_territorio.sql"
     - name: "mart_aree_interne"
       sql: "sql/mart_aree_interne.sql"
+    - name: "mart_regione_provincia"
+      sql: "sql/mart_regione_provincia.sql"
+    - name: "mart_comune_finanziamenti"
+      sql: "sql/mart_comune_finanziamenti.sql"
+  validate:
+    table_rules:
+      mart_territorio:
+        required_columns: [regione, comune, n_progetti, n_localizzazioni]
+        min_rows: 1000
+      mart_aree_interne:
+        required_columns: [cod_area_interna, classificazione, n_progetti]
+        min_rows: 50
+      mart_regione_provincia:
+        required_columns: [regione, provincia, n_progetti]
+        min_rows: 50
+      mart_comune_finanziamenti:
+        required_columns: [regione, comune, n_progetti, finanz_ue_attribuito]
+        min_rows: 1000
 
 validation:
   fail_on_error: true
+
+support:
+  - name: "progetti"
+    config: "../opencoesione-progetti/dataset.yml"
+    years: [2026]
+

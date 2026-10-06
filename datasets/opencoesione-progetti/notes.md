@@ -1,81 +1,48 @@
 # opencoesione-progetti — note
 
+## Stato
+
+- **Onboardato** in questo repo con `dataset.yml` (PR feat: ripristina opencoesione-progetti).
+- Prima era orfano: README/notes/SQL presenti dal commit iniziale, **mai** `dataset.yml` → fuori Makefile, CI e registry.
+- Candidato storico in `dataset-incubator` rimosso da PR DI #853 («moved to open-coesione») ma senza config qui.
+- Path GCS legacy (senza prefisso `open-coesione/`): ancora consumato da data-explorer e downstream — follow-up separato.
+
 ## Fonte
 
 - **Ente**: PCM — Dipartimento Politiche di Coesione / OpenCoesione
-- **Portale di riferimento**: dati.gov.it (organization: pcm-opencoesione)
-- **File**: `progetti_20260430.parquet` (2.3M righe, 95 colonne)
-- **Licenza**: CC BY 4.0
-- **Aggiornamento**: 2026-04-30 (data dump)
-- **Issue intake**: #440
+- **File attuale**: `progetti_20260630.parquet` (2.331.215 righe, 97 colonne)
+- **URL**: `https://opencoesione.gov.it/media/open_data/progetti_20260630.parquet`
+- **Dump precedente** (obsoleto, 404): `progetti_20260430.parquet` (2.320.817 righe, 95 colonne)
+- **Issue intake**: dataset-incubator #440
 
-## Struttura dati
+## Break di schema 20260430 → 20260630
 
-### Raw layer (95 colonne)
-- **Identificativi**: COD_LOCALE_PROGETTO, CUP, OC_LINK
-- **Titolo/descrizione**: OC_TITOLO_PROGETTO, OC_SINTESI_PROGETTO
-- **Ciclo**: OC_COD_CICLO, OC_DESCR_CICLO
-- **Tema**: OC_COD_TEMA_SINTETICO, OC_TEMA_SINTETICO
-- **Grande progetto**: COD_GRANDE_PROGETTO, DESCRIZIONE_GRANDE_PROGETTO
-- **Dettagli CUP**: natura, settore, categoria (cod + descr)
-- **Tipo aiuto**: OC_COD_TIPO_AIUTO, OC_DESCR_TIPO_AIUTO
-- **Geografia**: OC_MACROAREA, OC_COD_SLL, OC_DENOMINAZIONE_SLL
-- **Settore**: COD_ATECO, DESCRIZIONE_ATECO
-- **Stati**: OC_STATO_PROGETTO, OC_STATO_PROCEDURALE, OC_STATO_FINANZIARIO, fase corrente
-- **Date**: inizio, fine prevista, fine effettiva
-- **Finanziamenti lordi**: UE (totale + FESR + FSE), FSC, regione, provincia, comune, privato, totale pubblico
-- **Finanziamenti netti**: versione netta di tutti i precedenti
-- **Costo/coesione**: OC_COSTO_COESIONE, COSTO_REALIZZATO
-- **Economie**: totali e pubbliche
-- **Impegni**: totali, giuridici vincolanti, coesione
-- **Pagamenti**: totali, beneficiari, coesione
-- **Meta**: DATA_AGGIORNAMENTO
+| Cambio | Impatto |
+|---|---|
+| `OC_MACROAREA` → `OC_MACROAREA_PROGETTO` | clean/mart aggiornati |
+| + `OC_MACROAREA_PROGRAMMA` | aggiunto al clean |
+| + `FINANZ_UE_ALTRO`, `OC_FINANZ_UE_ALTRO_NETTO` | aggiunti al clean |
+| + `FINANZ_STATO_PAC` | aggiunto al clean |
+| + `OC_FLAG_AGGREGATO`, `OC_PROGETTO_AGGREGATO` | aggiunti al clean |
 
-### Clean layer (50 colonne)
-Selezione delle colonne più utili per analisi. Escluse:
-- Versioni NETTO dei finanziamenti (tranne UE e totale)
-- Dettagli CUP meno importanti (tipologia, sottosettore)
-- Flag di visualizzazione
+## Confronto con esteso (dump 20260630)
 
-### Mart layer
-- **mart_tema_ciclo**: aggregazione per ciclo × tema × macroarea con:
-  - Conteggi (progetti, grandi progetti)
-  - Finanziamenti lordi e netti per fonte
-  - Costo, realizzazione, economie
-  - Impegni e pagamenti
-  - Ratio utili (pagamenti/costo, impegni/costo, netto/lordo)
+- esteso 2021-2027 = **sottoinsieme** di flat 2021-2027 (130.462 / 174.142 COD)
+- UE flat 2021-27 ≈ €20,78 mld; esteso ≈ €20,70 mld; i 43k extra valgono ~€81 mln
+- Esteso ha programmi, geografia fine, ruoli CF, indicatori sparsi (~2%), 32 date di fasi
+- Flat ha 4 cicli ed è hub di join per pagamenti/fasi/impegni/localizzazioni
 
-## Decisioni di framing
+## Filtro clean
 
-- v0 usa il parquet perché più veloce e pulito
-- La granularità geografica è macroarea (non regione) — per analisi regionali servirebbe il CSV esteso o join con `soggetti`
-- I campi nested (programmi, fasi, indicatori, storico) non sono nel parquet flat — disponibili solo via API REST
-- Le versioni NETTO dei finanziamenti sono state limitate a UE e totale per ridurre la dimensionalità
+Prima: `WHERE OC_MACROAREA IS NOT NULL AND OC_TEMA_SINTETICO IS NOT NULL` → buttava ~6-13k progetti (fino a ~€2 mld UE) e non era più allineato al nome colonna.
 
-## Limiti noti
-
-- `OC_MACROAREA` ha solo 6 valori — nessun dettaglio regionale
-- Le date sono INTEGER (formato YYYYMMDD) — non ancora normalizzate in DATE
-- I progetti multi-regione potrebbero essere classificati come "Ambito Nazionale" o "Trasversale"
-- Campi nested (programmi, fasi, indicatori) non disponibili nel parquet flat
-
-## Output v1
-
-Tabella `mart_tema_ciclo`:
-- `ciclo`, `tema`, `macroarea`
-- `n_progetti`, `n_grandi_progetti`
-- `finanz_ue_tot`, `finanz_fesr_tot`, `finanz_fse_tot`, `finanz_fsc_tot`, `finanz_regione_tot`, `finanz_privato_tot`, `finanz_tot_pub`
-- `finanz_ue_netto_tot`, `finanz_tot_pub_netto`
-- `costo_coesione`, `costo_realizzato`
-- `economie_tot`, `economie_pubbliche_tot`
-- `impegni_tot`, `impegni_coesione_tot`
-- `pagamenti_tot`, `pagamenti_coesione_tot`, `pagamenti_beneficiari_tot`
-- `ratio_pagamenti_costo`, `ratio_impegni_costo`, `ratio_netto_lordo`
+Oggi: solo `COD_LOCALE_PROGETTO` non null. Macroarea/tema null restano nel clean; il mart li etichetta `Non classificata` / `Non classificato`.
 
 ## Prossimi passi
 
-- [x] Espandere clean con colonne utili (v1)
-- [x] Aggiornare mart con più metriche (v1)
-- [ ] Creare notebook v1 con visualizzazioni
-- [ ] Valutare aggiunta mart per grandi progetti
-- [ ] Valutare switch a CSV esteso per granularità regionale in v2
+- [x] `dataset.yml` + clean/mart allineati a 20260630
+- [x] `mart_tema_ciclo` rinominato da `mart.sql` (convenzione repo)
+- [ ] Dopo merge: verificare registry post-merge e path GCS `open-coesione/opencoesione_progetti/`
+- [ ] Follow-up: migrare data-explorer e downstream dal path DI legacy
+- [ ] Follow-up: dataset `fasi` / `impegni` (ritardo e serie impegni)
+- [ ] Follow-up: fix `mart_flusso_cassa` già in questa PR (CAST anno)
