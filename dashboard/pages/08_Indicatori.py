@@ -5,7 +5,7 @@ from __future__ import annotations
 import plotly.express as px
 import streamlit as st
 
-from sources import fmt_num, load_valutazione
+from sources import load_valutazione
 
 st.title("📈 Indicatori")
 st.caption(

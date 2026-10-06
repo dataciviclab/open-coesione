@@ -9,9 +9,9 @@ import streamlit as st
 from sources import (
     STATUS_COLORS,
     add_ciclo_short,
-    fmt_eur,
     load_flusso_cassa,
     load_impegni_anno,
+    load_impegni_ciclo,
     load_pagamenti_avanzamento,
     load_pagamenti_programma,
 )
@@ -20,6 +20,7 @@ st.title("💶 Cassa e impegni")
 
 cassa = load_flusso_cassa()
 imp = load_impegni_anno()
+imp_ciclo = add_ciclo_short(load_impegni_ciclo())
 avanz = add_ciclo_short(load_pagamenti_avanzamento())
 prog = load_pagamenti_programma()
 
@@ -55,7 +56,28 @@ if not imp.empty and not cassa.empty:
     st.plotly_chart(fig2, width="stretch")
     st.caption("Le due serie non coincidono 1:1 con gli snapshot sul progetto.")
 
-st.subheader("Cassa per stato di avanzamento")
+st.subheader("Impegni per ciclo × anno")
+if not imp_ciclo.empty:
+    cicli_i = sorted(imp_ciclo["ciclo_short"].dropna().unique())
+    sel_i = st.multiselect(
+        "Ciclo (impegni)",
+        cicli_i,
+        default=[c for c in cicli_i if "2014" in c or "2007" in c] or cicli_i[:2],
+        key="imp_ciclo",
+    )
+    df_i = imp_ciclo[imp_ciclo["ciclo_short"].isin(sel_i)] if sel_i else imp_ciclo
+    fig_i = px.bar(
+        df_i,
+        x="anno",
+        y="totale_impegni",
+        color="ciclo_short",
+        barmode="group",
+        labels={"totale_impegni": "Impegni", "anno": "Anno"},
+    )
+    fig_i.update_layout(height=400)
+    st.plotly_chart(fig_i, width="stretch")
+
+st.subheader("Pagamenti per stato di avanzamento")
 if not avanz.empty:
     cicli_u = sorted(avanz["ciclo_short"].dropna().unique())
     sel = st.multiselect("Ciclo", cicli_u, default=[c for c in cicli_u if "2021" in c or "2014" in c] or cicli_u[:2])

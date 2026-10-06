@@ -5,7 +5,12 @@ from __future__ import annotations
 import plotly.express as px
 import streamlit as st
 
-from sources import add_ciclo_short, fmt_eur, fmt_num, load_ritardo_ciclo, load_ritardo_fase
+from sources import (
+    add_ciclo_short,
+    fmt_eur,
+    load_ritardo_ciclo,
+    load_ritardo_fase,
+)
 
 st.title("⏱️ Ritardo")
 st.caption(

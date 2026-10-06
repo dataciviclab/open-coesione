@@ -7,6 +7,7 @@ on:
       - "support/**"
       - "scripts/**"
       - "tests/**"
+      - "dashboard/**"
       - "**/*.py"
       - "**/*.yml"
       - "**/*.yaml"
@@ -45,5 +46,5 @@ jobs:
       - uses: dataciviclab/.github/actions/python-setup@main
         with:
           install-extras: "dev"
-      - name: pytest smoke
-        run: pytest tests/ -q
+      - name: pytest repo + dashboard smoke
+        run: pytest tests/ dashboard/tests/ -q

@@ -10,7 +10,7 @@ LIGHT_DATASETS := \
 	datasets/opencoesione-progetti-esteso/dataset.yml \
 	datasets/opencoesione-indicatori/dataset.yml
 
-.PHONY: check run run-all run-dataset run-batch run-light verify clean registry-write help
+.PHONY: check run run-all run-dataset run-batch run-light verify clean registry-write dashboard test-dashboard help
 
 check:
 	@for f in $(DATASETS); do \
@@ -60,6 +60,13 @@ run:
 # Smoke output: mart attesi presenti e non vuoti
 verify:
 	python3 scripts/verify_output.py --year 2026
+
+# Dashboard Streamlit (locale)
+dashboard:
+	cd dashboard && streamlit run app.py
+
+test-dashboard:
+	pytest dashboard/tests/ -q
 
 clean:
 	rm -rf out/data/_runs out/data/probe out/data/raw out/data/clean out/data/mart out/data/cross .tmp/ batch.txt

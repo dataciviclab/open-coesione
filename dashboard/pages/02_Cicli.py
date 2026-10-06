@@ -7,9 +7,6 @@ import streamlit as st
 
 from sources import (
     add_ciclo_short,
-    fmt_eur,
-    fmt_num,
-    fmt_pct,
     load_cicli,
     load_macroarea_ciclo,
     load_sll,

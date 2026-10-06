@@ -6,8 +6,6 @@ import plotly.express as px
 import streamlit as st
 
 from sources import (
-    fmt_eur,
-    fmt_num,
     load_aree_interne,
     load_comune_esteso,
     load_comune_finanziamenti,

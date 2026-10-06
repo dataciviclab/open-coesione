@@ -41,12 +41,11 @@ toolkit_dataset overview opencoesione_progetti_esteso
 toolkit_query run "SELECT * FROM opencoesione_soggetti LIMIT 10"
 ```
 
-### 2. Dashboard Streamilit
+### 2. Dashboard Streamlit
 
 ```bash
-pip install -e ".[dashboard]"
-# serve anche lab-connectors (da git, vedi dashboard/requirements.txt)
-cd dashboard && streamlit run app.py
+pip install -e ".[dashboard]"   # include lab-connectors[duckdb]
+make dashboard                  # oppure: cd dashboard && streamlit run app.py
 ```
 
 ### 3. Localmente (pipeline)

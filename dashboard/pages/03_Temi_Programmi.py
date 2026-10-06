@@ -8,7 +8,6 @@ import streamlit as st
 from sources import (
     STATUS_COLORS,
     add_ciclo_short,
-    fmt_eur,
     load_esteso_stato_tema,
     load_esteso_tema,
     load_programmi,

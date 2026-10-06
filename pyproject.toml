@@ -33,6 +33,7 @@ dashboard = [
     "altair>=6.2",
     "pandas>=3.0",
     "duckdb>=1.5.3",
+    "lab-connectors[duckdb] @ git+https://github.com/dataciviclab/lab-connectors.git",
 ]
 
 [tool.pytest.ini_options]
@@ -40,6 +41,17 @@ testpaths = ["tests", "dashboard/tests"]
 markers = [
     "smoke: smoke test leggeri (config, SQL, struttura)",
 ]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+src = ["dashboard", "tests", "scripts"]
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I", "W"]
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["F401"]
 
 [project.urls]
 Home = "https://github.com/dataciviclab/open-coesione"
