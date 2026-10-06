@@ -51,6 +51,8 @@ mart:
       sql: "sql/mart_sll.sql"
     - name: "mart_ciclo"
       sql: "sql/mart_ciclo.sql"
+    - name: "mart_macroarea_ciclo"
+      sql: "sql/mart_macroarea_ciclo.sql"
   validate:
     table_rules:
       mart_tema_ciclo:
@@ -72,6 +74,9 @@ mart:
       mart_ciclo:
         required_columns: [ciclo, n_progetti, finanz_ue_tot, costo_coesione]
         min_rows: 3
+      mart_macroarea_ciclo:
+        required_columns: [macroarea, ciclo, n_progetti, finanz_ue_tot]
+        min_rows: 5
 
 validation:
   fail_on_error: true

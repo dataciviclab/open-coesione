@@ -44,8 +44,6 @@ mart:
       sql: "sql/mart_regione_provincia.sql"
     - name: "mart_comune_finanziamenti"
       sql: "sql/mart_comune_finanziamenti.sql"
-    - name: "mart_territorio_finanziamenti"
-      sql: "sql/mart_territorio_finanziamenti.sql"
   validate:
     table_rules:
       mart_territorio:
@@ -60,9 +58,6 @@ mart:
       mart_comune_finanziamenti:
         required_columns: [regione, comune, n_progetti, finanz_ue_attribuito]
         min_rows: 1000
-      mart_territorio_finanziamenti:
-        required_columns: [macroarea, ciclo, n_progetti, finanz_ue_tot]
-        min_rows: 5
 
 validation:
   fail_on_error: true

@@ -5,8 +5,10 @@ on:
     types: [closed]
     paths:
       - "datasets/**"
-      - "support/**"
+      - "scripts/**"
+      - ".github/workflows/pipeline.yml"
   schedule:
+    # Mensile: 1 del mese alle 6:00 UTC — run completo
     - cron: "0 6 1 * *"
   workflow_dispatch:
     inputs:
@@ -15,13 +17,27 @@ on:
         required: false
         default: ""
 
+concurrency:
+  group: open-coesione-pipeline-${{ github.event.pull_request.number || github.ref || 'schedule' }}
+  cancel-in-progress: false
+
 jobs:
   pipeline:
     if: github.event.pull_request.merged == true || github.event_name != 'pull_request'
     uses: dataciviclab/.github/.github/workflows/pipeline-reusable.yml@main
     with:
       repo-slug: "open-coesione"
+      # Su PR merged: solo dataset cambiati (batch). Su schedule/dispatch: tutti.
+      detect-paths: "datasets"
       run-command: "make run-all"
+      run-batch-command: "make run-batch"
+      verify-command: "make verify"
+      # per-dataset: su PR selettivo sync solo gli slug presenti in out/
+      sync-pattern: "per-dataset"
+      extra-env: |
+        DUCKDB_MEMORY_LIMIT=1.5GB
+        DUCKDB_THREADS=2
+        DUCKDB_PRESERVE_INSERTION_ORDER=false
     permissions:
       contents: write
       pull-requests: write

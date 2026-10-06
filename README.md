@@ -47,7 +47,18 @@ toolkit_query run "SELECT * FROM opencoesione_soggetti LIMIT 10"
 git clone https://github.com/dataciviclab/open-coesione.git
 cd open-coesione
 pip install -e ".[pipeline]"
-make run
+
+# Preflight su tutte le config
+make check
+
+# Iterazione locale (senza fasi/impegni multi-M)
+make run-light
+
+# Singolo dataset
+make run-dataset DATASET=opencoesione-progetti-esteso
+
+# Completo (pesante — schedule/dispatch)
+make run-all
 ```
 
 ### 3. GCS
@@ -66,6 +77,7 @@ RAW (parquet OpenCoesione) → CLEAN → MART
 | `mart_stato_ciclo` | progetti | Avanzamento per ciclo × stato progetto |
 | `mart_sll` | progetti | Finanziamenti per SLL (geografia storica) |
 | `mart_ciclo` | progetti | KPI sintetici per ciclo (panoramica) |
+| `mart_macroarea_ciclo` | progetti | Denaro per macroarea × ciclo |
 | `mart_tema_ciclo` | progetti_esteso | Idem sul ciclo 2021-2027 (universo esteso) |
 | `mart_geolocalizzazione` | progetti_esteso | Progetti per regione × provincia (2021-27) |
 | `mart_programmi` | progetti_esteso | Progetti per programma operativo |
@@ -78,7 +90,6 @@ RAW (parquet OpenCoesione) → CLEAN → MART
 | `mart_aree_interne` | localizzazioni | Aree interne per COD_AREA_INTERNA |
 | `mart_regione_provincia` | localizzazioni | Carico per regione/provincia |
 | `mart_comune_finanziamenti` | localizzazioni | Denaro per comune storico (attribuzione multi-sede) |
-| `mart_territorio_finanziamenti` | localizzazioni | Denaro per macroarea × ciclo |
 | `mart_flusso_cassa` | pagamenti | Pagamenti per anno |
 | `mart_pagamenti_programma` | pagamenti | Pagamenti per programma |
 | `mart_pagamenti_avanzamento` | pagamenti | Cassa per ciclo × stato × anno |
