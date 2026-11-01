@@ -2,7 +2,7 @@
   "schema_version": 1,
   "repo": "open-coesione",
   "source_repo": "dataciviclab/open-coesione",
-  "updated_at": "2026-10-06",
+  "updated_at": "2026-11-01",
   "datasets": [
     {
       "slug": "opencoesione_fasi",
@@ -611,7 +611,8 @@
           "name": "COD_ATECO",
           "type": "VARCHAR",
           "role": "dimension",
-          "description": ""
+          "description": "",
+          "semantic_type": "ateco_code"
         },
         {
           "name": "DESCRIZIONE_ATECO",
@@ -1132,7 +1133,8 @@
           "name": "COD_ATECO",
           "type": "VARCHAR",
           "role": "dimension",
-          "description": ""
+          "description": "",
+          "semantic_type": "ateco_code"
         },
         {
           "name": "DESCRIZIONE_ATECO",
@@ -1395,7 +1397,8 @@
           "name": "OC_CODICE_FISCALE_SOGG",
           "type": "VARCHAR",
           "role": "dimension",
-          "description": ""
+          "description": "",
+          "semantic_type": "fiscal_code"
         },
         {
           "name": "OC_DENOMINAZIONE_SOGG",
@@ -1419,7 +1422,8 @@
           "name": "COD_COMUNE_SEDE_SOGG",
           "type": "VARCHAR",
           "role": "dimension",
-          "description": ""
+          "description": "",
+          "semantic_type": "municipality_code"
         },
         {
           "name": "INDIRIZZO_SOGG",
@@ -1437,7 +1441,8 @@
           "name": "COD_ATECO_SOGG",
           "type": "VARCHAR",
           "role": "dimension",
-          "description": ""
+          "description": "",
+          "semantic_type": "ateco_code"
         },
         {
           "name": "DESCRIZIONE_ATECO_SOGG",
@@ -1473,7 +1478,8 @@
           "name": "CODICE_FISCALE_SOGGETTO",
           "type": "VARCHAR",
           "role": "dimension",
-          "description": ""
+          "description": "",
+          "semantic_type": "fiscal_code"
         },
         {
           "name": "DENOMINAZIONE_SOGGETTO",
@@ -1778,7 +1784,7 @@
       "detail": "anno 2026 — mart: si",
       "action": "",
       "run": {
-        "run_id": "20261006T085605Z_4e6eaeaa",
+        "run_id": "20261101T124353Z_f64ab95b",
         "year": 2026,
         "status": "SUCCESS",
         "quality_score": {
@@ -1792,12 +1798,12 @@
         },
         "output_bytes": {
           "raw": 33367767,
-          "clean": 27939861,
-          "mart": 7520
+          "clean": 27891051,
+          "mart": 7528
         },
-        "started_at": "2026-10-06T08:56:05.746394+00:00",
-        "finished_at": "2026-10-06T08:56:15.600643+00:00",
-        "duration_seconds": 9.854
+        "started_at": "2026-11-01T12:43:53.482036+00:00",
+        "finished_at": "2026-11-01T12:44:01.179427+00:00",
+        "duration_seconds": 7.697
       }
     },
     {
@@ -1808,7 +1814,7 @@
       "detail": "anno 2026 — mart: si",
       "action": "",
       "run": {
-        "run_id": "20261006T085616Z_8eadb302",
+        "run_id": "20261101T124401Z_cf95da93",
         "year": 2026,
         "status": "SUCCESS",
         "quality_score": {
@@ -1822,12 +1828,12 @@
         },
         "output_bytes": {
           "raw": 21221846,
-          "clean": 16261845,
-          "mart": 9058
+          "clean": 16240887,
+          "mart": 9054
         },
-        "started_at": "2026-10-06T08:56:16.410488+00:00",
-        "finished_at": "2026-10-06T08:56:22.615334+00:00",
-        "duration_seconds": 6.205
+        "started_at": "2026-11-01T12:44:01.947435+00:00",
+        "finished_at": "2026-11-01T12:44:05.989492+00:00",
+        "duration_seconds": 4.042
       }
     },
     {
@@ -1838,7 +1844,7 @@
       "detail": "anno 2026 — mart: si",
       "action": "",
       "run": {
-        "run_id": "20261006T085623Z_d7827a37",
+        "run_id": "20261101T124406Z_83d7692e",
         "year": 2026,
         "status": "SUCCESS",
         "quality_score": {
@@ -1852,12 +1858,12 @@
         },
         "output_bytes": {
           "raw": 13213715,
-          "clean": 9470130,
-          "mart": 6134
+          "clean": 9309048,
+          "mart": 6133
         },
-        "started_at": "2026-10-06T08:56:23.354776+00:00",
-        "finished_at": "2026-10-06T08:56:30.174240+00:00",
-        "duration_seconds": 6.819
+        "started_at": "2026-11-01T12:44:06.982951+00:00",
+        "finished_at": "2026-11-01T12:44:11.299427+00:00",
+        "duration_seconds": 4.316
       }
     },
     {
@@ -1868,7 +1874,7 @@
       "detail": "anno 2026 — mart: si",
       "action": "",
       "run": {
-        "run_id": "20261006T085630Z_36d40bf1",
+        "run_id": "20261101T124412Z_534430d7",
         "year": 2026,
         "status": "SUCCESS",
         "quality_score": {
@@ -1882,12 +1888,12 @@
         },
         "output_bytes": {
           "raw": 57995921,
-          "clean": 54785310,
-          "mart": 512015
+          "clean": 54788610,
+          "mart": 512250
         },
-        "started_at": "2026-10-06T08:56:30.770855+00:00",
-        "finished_at": "2026-10-06T08:56:42.190428+00:00",
-        "duration_seconds": 11.42
+        "started_at": "2026-11-01T12:44:12.561084+00:00",
+        "finished_at": "2026-11-01T12:44:21.727889+00:00",
+        "duration_seconds": 9.167
       }
     },
     {
@@ -1898,7 +1904,7 @@
       "detail": "anno 2026 — mart: si",
       "action": "",
       "run": {
-        "run_id": "20261006T085642Z_d051f53f",
+        "run_id": "20261101T124422Z_008af099",
         "year": 2026,
         "status": "SUCCESS",
         "quality_score": {
@@ -1912,12 +1918,12 @@
         },
         "output_bytes": {
           "raw": 64991769,
-          "clean": 48893233,
-          "mart": 24884
+          "clean": 49181197,
+          "mart": 24872
         },
-        "started_at": "2026-10-06T08:56:42.989340+00:00",
-        "finished_at": "2026-10-06T08:56:54.403526+00:00",
-        "duration_seconds": 11.414
+        "started_at": "2026-11-01T12:44:22.478675+00:00",
+        "finished_at": "2026-11-01T12:44:30.662339+00:00",
+        "duration_seconds": 8.184
       }
     },
     {
@@ -1928,7 +1934,7 @@
       "detail": "anno 2026 — mart: si",
       "action": "",
       "run": {
-        "run_id": "20261006T085654Z_08028ea3",
+        "run_id": "20261101T124436Z_c073703b",
         "year": 2026,
         "status": "SUCCESS",
         "quality_score": {
@@ -1943,11 +1949,11 @@
         "output_bytes": {
           "raw": 241629359,
           "clean": 185225589,
-          "mart": 66340
+          "mart": 66365
         },
-        "started_at": "2026-10-06T08:56:54.987912+00:00",
-        "finished_at": "2026-10-06T08:57:19.248464+00:00",
-        "duration_seconds": 24.261
+        "started_at": "2026-11-01T12:44:36.516689+00:00",
+        "finished_at": "2026-11-01T12:44:57.828305+00:00",
+        "duration_seconds": 21.312
       }
     },
     {
@@ -1958,7 +1964,7 @@
       "detail": "anno 2026 — mart: si",
       "action": "",
       "run": {
-        "run_id": "20261006T085719Z_77d6905b",
+        "run_id": "20261101T124431Z_242d464a",
         "year": 2026,
         "status": "SUCCESS",
         "quality_score": {
@@ -1973,11 +1979,11 @@
         "output_bytes": {
           "raw": 17587198,
           "clean": 10043116,
-          "mart": 317337
+          "mart": 317297
         },
-        "started_at": "2026-10-06T08:57:19.839678+00:00",
-        "finished_at": "2026-10-06T08:57:25.841964+00:00",
-        "duration_seconds": 6.002
+        "started_at": "2026-11-01T12:44:31.679576+00:00",
+        "finished_at": "2026-11-01T12:44:35.233355+00:00",
+        "duration_seconds": 3.554
       }
     },
     {
@@ -1988,7 +1994,7 @@
       "detail": "anno 2026 — mart: si",
       "action": "",
       "run": {
-        "run_id": "20261006T085726Z_b72485f0",
+        "run_id": "20261101T124458Z_e83683cf",
         "year": 2026,
         "status": "SUCCESS",
         "quality_score": {
@@ -2002,18 +2008,45 @@
         },
         "output_bytes": {
           "raw": 104718095,
-          "clean": 89389997,
-          "mart": 21109640
+          "clean": 88580669,
+          "mart": 21156161
         },
-        "started_at": "2026-10-06T08:57:26.468155+00:00",
-        "finished_at": "2026-10-06T08:57:50.120208+00:00",
-        "duration_seconds": 23.652
+        "started_at": "2026-11-01T12:44:58.886211+00:00",
+        "finished_at": "2026-11-01T12:45:17.525302+00:00",
+        "duration_seconds": 18.639
       }
     }
   ],
   "codelists": [],
   "entities": {
     "entities": {
+      "Attività economica": {
+        "entity": "Attività economica",
+        "label": "Attività economica",
+        "datasets": [
+          {
+            "slug": "opencoesione_progetti",
+            "name": "Opencoesione Progetti",
+            "column": "COD_ATECO",
+            "semantic_type": "ateco_code"
+          },
+          {
+            "slug": "opencoesione_progetti_esteso",
+            "name": "Opencoesione Progetti Esteso",
+            "column": "COD_ATECO",
+            "semantic_type": "ateco_code"
+          },
+          {
+            "slug": "opencoesione_soggetti",
+            "name": "Opencoesione Soggetti",
+            "column": "COD_ATECO_SOGG",
+            "semantic_type": "ateco_code"
+          }
+        ],
+        "types": {
+          "ateco_code": 3
+        }
+      },
       "Comune": {
         "entity": "Comune",
         "label": "Comune (ISTAT)",
@@ -2029,10 +2062,37 @@
             "name": "Opencoesione Progetti Esteso",
             "column": "COD_COMUNE",
             "semantic_type": "municipality_code"
+          },
+          {
+            "slug": "opencoesione_soggetti",
+            "name": "Opencoesione Soggetti",
+            "column": "COD_COMUNE_SEDE_SOGG",
+            "semantic_type": "municipality_code"
           }
         ],
         "types": {
-          "municipality_code": 2
+          "municipality_code": 3
+        }
+      },
+      "Ente (o Impresa)": {
+        "entity": "Ente (o Impresa)",
+        "label": "Ente (o Impresa)",
+        "datasets": [
+          {
+            "slug": "opencoesione_soggetti",
+            "name": "Opencoesione Soggetti",
+            "column": "OC_CODICE_FISCALE_SOGG",
+            "semantic_type": "fiscal_code"
+          },
+          {
+            "slug": "opencoesione_soggetti",
+            "name": "Opencoesione Soggetti",
+            "column": "CODICE_FISCALE_SOGGETTO",
+            "semantic_type": "fiscal_code"
+          }
+        ],
+        "types": {
+          "fiscal_code": 2
         }
       },
       "Fondo": {
