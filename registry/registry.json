@@ -1,19 +1,18 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "repo": "open-coesione",
   "source_repo": "dataciviclab/open-coesione",
-  "updated_at": "2026-11-01",
+  "updated_at": "2026-11-25",
+  "gcs": {
+    "clean": "year",
+    "prefix": "open-coesione/"
+  },
   "datasets": [
     {
       "slug": "opencoesione_fasi",
       "name": "Opencoesione Fasi",
       "description": "Fasi procedurali dei progetti coesione (previsto vs effettivo) — base per ritardo e timeline di avanzamento.\n",
-      "source": "",
       "source_id": "opencoesione",
-      "period": {
-        "start": 2000,
-        "end": 2027
-      },
       "tags": [
         "finanza-pubblica",
         "opencoesione",
@@ -22,83 +21,75 @@
         "avanzamento"
       ],
       "category": "finanza-pubblica",
+      "period": {
+        "start": 2000,
+        "end": 2027
+      },
+      "partitions": {
+        "2026": 4922602
+      },
       "columns": [
         {
           "name": "COD_LOCALE_PROGETTO",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "OC_COD_FASE",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "OC_DESCR_FASE",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "data_inizio_prevista",
           "type": "DATE",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "data_inizio_effettiva",
           "type": "DATE",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "data_fine_prevista",
           "type": "DATE",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "data_fine_effettiva",
           "type": "DATE",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "ritardo_giorni_fine",
           "type": "BIGINT",
-          "role": "metric",
-          "description": ""
+          "role": "metric"
         },
         {
           "name": "ritardo_giorni_inizio",
           "type": "BIGINT",
-          "role": "metric",
-          "description": ""
+          "role": "metric"
         }
       ],
-      "location": {
-        "type": "gcs",
-        "path": "gs://dataciviclab-clean/open-coesione/opencoesione_fasi/2026/opencoesione_fasi_2026_clean.parquet",
-        "multi_file": false
-      },
-      "stage": "incubating",
       "mart_refs": [
         "opencoesione_fasi__mart_ritardo_fase",
         "opencoesione_fasi__mart_ritardo_ciclo"
-      ]
+      ],
+      "last_run": {
+        "at": "2026-11-25T00:21:28.146230+00:00",
+        "year": 2026,
+        "status": "SUCCESS"
+      }
     },
     {
       "slug": "opencoesione_impegni",
       "name": "Opencoesione Impegni",
       "description": "Serie storica degli impegni per progetto — confronto con pagamenti e snapshot IMPEGNI sul layer progetti.\n",
-      "source": "",
       "source_id": "opencoesione",
-      "period": {
-        "start": 1990,
-        "end": 2027
-      },
       "tags": [
         "finanza-pubblica",
         "opencoesione",
@@ -107,60 +98,55 @@
         "serie-storica"
       ],
       "category": "finanza-pubblica",
+      "period": {
+        "start": 1990,
+        "end": 2027
+      },
+      "partitions": {
+        "2026": 2751345
+      },
       "columns": [
         {
           "name": "COD_LOCALE_PROGETTO",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "OC_DATA_IMPEGNI",
           "type": "INTEGER",
-          "role": "metric",
-          "description": ""
+          "role": "metric"
         },
         {
           "name": "anno",
           "type": "INTEGER",
           "role": "dimension",
-          "description": "",
           "semantic_type": "year"
         },
         {
           "name": "IMPEGNI",
           "type": "DOUBLE",
-          "role": "metric",
-          "description": ""
+          "role": "metric"
         },
         {
           "name": "OC_TIPO_IMPEGNI",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         }
       ],
-      "location": {
-        "type": "gcs",
-        "path": "gs://dataciviclab-clean/open-coesione/opencoesione_impegni/2026/opencoesione_impegni_2026_clean.parquet",
-        "multi_file": false
-      },
-      "stage": "incubating",
       "mart_refs": [
         "opencoesione_impegni__mart_impegni_anno",
         "opencoesione_impegni__mart_impegni_ciclo"
-      ]
+      ],
+      "last_run": {
+        "at": "2026-11-25T00:21:37.231531+00:00",
+        "year": 2026,
+        "status": "SUCCESS"
+      }
     },
     {
       "slug": "opencoesione_indicatori",
       "name": "Opencoesione Indicatori",
-      "description": "",
-      "source": "",
       "source_id": "opencoesione",
-      "period": {
-        "start": 2007,
-        "end": 2027
-      },
       "tags": [
         "finanza-pubblica",
         "opencoesione",
@@ -168,85 +154,76 @@
         "valutazione"
       ],
       "category": "finanza-pubblica",
+      "period": {
+        "start": 2007,
+        "end": 2027
+      },
+      "partitions": {
+        "2026": 3711947
+      },
       "columns": [
         {
           "name": "COD_LOCALE_PROGETTO",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "TIPO_INDICATORE",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "COD_INDICATORE",
           "type": "VARCHAR",
           "role": "dimension",
-          "description": "",
           "semantic_type": "indicatore_code"
         },
         {
           "name": "DESCR_INDICATORE",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "UNITA_MISURA",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "DESCR_UNITA_MISURA",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "VALORE_PROGRAMMATO",
           "type": "DOUBLE",
           "role": "dimension",
-          "description": "",
           "semantic_type": "target_value"
         },
         {
           "name": "VALORE_REALIZZATO",
           "type": "DOUBLE",
-          "role": "metric",
-          "description": ""
+          "role": "metric"
         },
         {
           "name": "OC_FLAG_VISUAL_INDICATORE",
           "type": "INTEGER",
-          "role": "metric",
-          "description": ""
+          "role": "metric"
         }
       ],
-      "location": {
-        "type": "gcs",
-        "path": "gs://dataciviclab-clean/open-coesione/opencoesione_indicatori/2026/opencoesione_indicatori_2026_clean.parquet",
-        "multi_file": false
-      },
-      "stage": "incubating",
       "mart_refs": [
         "opencoesione_indicatori__mart_valutazione",
         "opencoesione_indicatori__mart_indicatori_tipo"
-      ]
+      ],
+      "last_run": {
+        "at": "2026-11-25T00:21:42.221785+00:00",
+        "year": 2026,
+        "status": "SUCCESS"
+      }
     },
     {
       "slug": "opencoesione_localizzazioni",
       "name": "Opencoesione Localizzazioni",
-      "description": "",
-      "source": "",
       "source_id": "opencoesione",
-      "period": {
-        "start": 2007,
-        "end": 2027
-      },
       "tags": [
         "finanza-pubblica",
         "opencoesione",
@@ -254,123 +231,108 @@
         "geolocalizzazione"
       ],
       "category": "finanza-pubblica",
+      "period": {
+        "start": 2007,
+        "end": 2027
+      },
+      "partitions": {
+        "2026": 2458097
+      },
       "columns": [
         {
           "name": "COD_LOCALE_PROGETTO",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "COD_REGIONE",
           "type": "VARCHAR",
           "role": "dimension",
-          "description": "",
           "semantic_type": "region_code"
         },
         {
           "name": "DEN_REGIONE",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "COD_PROVINCIA",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "DEN_PROVINCIA",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "COD_COMUNE",
           "type": "VARCHAR",
           "role": "dimension",
-          "description": "",
           "semantic_type": "municipality_code"
         },
         {
           "name": "DEN_COMUNE",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "COD_SLL",
           "type": "BIGINT",
-          "role": "metric",
-          "description": ""
+          "role": "metric"
         },
         {
           "name": "DEN_SLL",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "COD_AREA_INTERNA",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "DEN_AREA_INTERNA",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "CLASSIF_AREA_INTERNA",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "INDIRIZZO_PROG",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "CAP_PROG",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "OC_TERRITORIO_PROG",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         }
       ],
-      "location": {
-        "type": "gcs",
-        "path": "gs://dataciviclab-clean/open-coesione/opencoesione_localizzazioni/2026/opencoesione_localizzazioni_2026_clean.parquet",
-        "multi_file": false
-      },
-      "stage": "incubating",
       "mart_refs": [
         "opencoesione_localizzazioni__mart_territorio",
         "opencoesione_localizzazioni__mart_aree_interne",
         "opencoesione_localizzazioni__mart_regione_provincia",
         "opencoesione_localizzazioni__mart_comune_finanziamenti"
-      ]
+      ],
+      "last_run": {
+        "at": "2026-11-25T00:21:48.140346+00:00",
+        "year": 2026,
+        "status": "SUCCESS"
+      }
     },
     {
       "slug": "opencoesione_pagamenti",
       "name": "Opencoesione Pagamenti",
-      "description": "",
-      "source": "",
       "source_id": "opencoesione",
-      "period": {
-        "start": 2007,
-        "end": 2027
-      },
       "tags": [
         "finanza-pubblica",
         "opencoesione",
@@ -378,86 +340,77 @@
         "flussi-cassa"
       ],
       "category": "finanza-pubblica",
+      "period": {
+        "start": 2007,
+        "end": 2027
+      },
+      "partitions": {
+        "2026": 5656051
+      },
       "columns": [
         {
           "name": "COD_LOCALE_PROGETTO",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "OC_DATA_PAGAMENTI",
           "type": "INTEGER",
-          "role": "metric",
-          "description": ""
+          "role": "metric"
         },
         {
           "name": "TOT_PAGAMENTI",
           "type": "DOUBLE",
-          "role": "metric",
-          "description": ""
+          "role": "metric"
         },
         {
           "name": "OC_TOT_PAGAMENTI_RENDICONTAB_UE",
           "type": "DOUBLE",
-          "role": "metric",
-          "description": ""
+          "role": "metric"
         },
         {
           "name": "OC_TOT_PAGAMENTI_FSC",
           "type": "DOUBLE",
-          "role": "metric",
-          "description": ""
+          "role": "metric"
         },
         {
           "name": "OC_TOT_PAGAMENTI_PAC",
           "type": "DOUBLE",
-          "role": "metric",
-          "description": ""
+          "role": "metric"
         },
         {
           "name": "CODICE_PROGRAMMA",
           "type": "VARCHAR",
           "role": "dimension",
-          "description": "",
           "semantic_type": "programma_code"
         },
         {
           "name": "OC_CODICE_PROGRAMMA",
           "type": "VARCHAR",
           "role": "dimension",
-          "description": "",
           "semantic_type": "programma_code"
         },
         {
           "name": "OC_TIPO_PAGAMENTI",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         }
       ],
-      "location": {
-        "type": "gcs",
-        "path": "gs://dataciviclab-clean/open-coesione/opencoesione_pagamenti/2026/opencoesione_pagamenti_2026_clean.parquet",
-        "multi_file": false
-      },
-      "stage": "incubating",
       "mart_refs": [
         "opencoesione_pagamenti__mart_flusso_cassa",
         "opencoesione_pagamenti__mart_pagamenti_programma",
         "opencoesione_pagamenti__mart_pagamenti_avanzamento"
-      ]
+      ],
+      "last_run": {
+        "at": "2026-11-25T00:21:59.257885+00:00",
+        "year": 2026,
+        "status": "SUCCESS"
+      }
     },
     {
       "slug": "opencoesione_progetti",
       "name": "Opencoesione Progetti",
-      "description": "",
-      "source": "",
       "source_id": "opencoesione",
-      "period": {
-        "start": 2000,
-        "end": 2027
-      },
       "tags": [
         "finanza-pubblica",
         "opencoesione",
@@ -466,395 +419,335 @@
         "hub"
       ],
       "category": "finanza-pubblica",
+      "period": {
+        "start": 2000,
+        "end": 2027
+      },
+      "partitions": {
+        "2026": 2341583
+      },
       "columns": [
         {
           "name": "COD_LOCALE_PROGETTO",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "CUP",
           "type": "VARCHAR",
           "role": "dimension",
-          "description": "",
           "semantic_type": "cup_code"
         },
         {
           "name": "OC_LINK",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "OC_TITOLO_PROGETTO",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "OC_SINTESI_PROGETTO",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "OC_COD_CICLO",
           "type": "INTEGER",
-          "role": "metric",
-          "description": ""
+          "role": "metric"
         },
         {
           "name": "OC_DESCR_CICLO",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "OC_COD_TEMA_SINTETICO",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "OC_TEMA_SINTETICO",
           "type": "VARCHAR",
           "role": "dimension",
-          "description": "",
           "semantic_type": "policy_code"
         },
         {
           "name": "COD_GRANDE_PROGETTO",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "DESCRIZIONE_GRANDE_PROGETTO",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "CUP_COD_NATURA",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "CUP_DESCR_NATURA",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "CUP_COD_SETTORE",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "CUP_DESCR_SETTORE",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "CUP_COD_CATEGORIA",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "CUP_DESCR_CATEGORIA",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "OC_COD_TIPO_AIUTO",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "OC_DESCR_TIPO_AIUTO",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "OC_MACROAREA_PROGETTO",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "OC_MACROAREA_PROGRAMMA",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "OC_COD_SLL",
           "type": "BIGINT",
-          "role": "metric",
-          "description": ""
+          "role": "metric"
         },
         {
           "name": "OC_DENOMINAZIONE_SLL",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "COD_ATECO",
           "type": "VARCHAR",
           "role": "dimension",
-          "description": "",
           "semantic_type": "ateco_code"
         },
         {
           "name": "DESCRIZIONE_ATECO",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "OC_STATO_PROGETTO",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "OC_STATO_PROCEDURALE",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "OC_STATO_FINANZIARIO",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "OC_COD_FASE_CORRENTE",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "OC_DESCR_FASE_CORRENTE",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "OC_DATA_INIZIO_PROGETTO",
           "type": "INTEGER",
-          "role": "metric",
-          "description": ""
+          "role": "metric"
         },
         {
           "name": "OC_DATA_FINE_PROGETTO_PREVISTA",
           "type": "INTEGER",
-          "role": "metric",
-          "description": ""
+          "role": "metric"
         },
         {
           "name": "OC_DATA_FINE_PROGETTO_EFFETTIVA",
           "type": "INTEGER",
-          "role": "metric",
-          "description": ""
+          "role": "metric"
         },
         {
           "name": "FINANZ_UE",
           "type": "DOUBLE",
-          "role": "metric",
-          "description": ""
+          "role": "metric"
         },
         {
           "name": "FINANZ_UE_FESR",
           "type": "DOUBLE",
-          "role": "metric",
-          "description": ""
+          "role": "metric"
         },
         {
           "name": "FINANZ_UE_FSE",
           "type": "DOUBLE",
-          "role": "metric",
-          "description": ""
+          "role": "metric"
         },
         {
           "name": "FINANZ_UE_ALTRO",
           "type": "DOUBLE",
-          "role": "metric",
-          "description": ""
+          "role": "metric"
         },
         {
           "name": "FINANZ_STATO_FSC",
           "type": "DOUBLE",
-          "role": "metric",
-          "description": ""
+          "role": "metric"
         },
         {
           "name": "FINANZ_STATO_PAC",
           "type": "DOUBLE",
-          "role": "metric",
-          "description": ""
+          "role": "metric"
         },
         {
           "name": "FINANZ_REGIONE",
           "type": "DOUBLE",
-          "role": "metric",
-          "description": ""
+          "role": "metric"
         },
         {
           "name": "FINANZ_PROVINCIA",
           "type": "DOUBLE",
-          "role": "metric",
-          "description": ""
+          "role": "metric"
         },
         {
           "name": "FINANZ_COMUNE",
           "type": "DOUBLE",
-          "role": "metric",
-          "description": ""
+          "role": "metric"
         },
         {
           "name": "FINANZ_PRIVATO",
           "type": "DOUBLE",
-          "role": "metric",
-          "description": ""
+          "role": "metric"
         },
         {
           "name": "FINANZ_TOTALE_PUBBLICO",
           "type": "DOUBLE",
-          "role": "metric",
-          "description": ""
+          "role": "metric"
         },
         {
           "name": "OC_FINANZ_UE_NETTO",
           "type": "DOUBLE",
-          "role": "metric",
-          "description": ""
+          "role": "metric"
         },
         {
           "name": "OC_FINANZ_UE_ALTRO_NETTO",
           "type": "DOUBLE",
-          "role": "metric",
-          "description": ""
+          "role": "metric"
         },
         {
           "name": "OC_FINANZ_TOT_PUB_NETTO",
           "type": "DOUBLE",
-          "role": "metric",
-          "description": ""
+          "role": "metric"
         },
         {
           "name": "OC_COSTO_COESIONE",
           "type": "DOUBLE",
-          "role": "metric",
-          "description": ""
+          "role": "metric"
         },
         {
           "name": "COSTO_REALIZZATO",
           "type": "DOUBLE",
-          "role": "metric",
-          "description": ""
+          "role": "metric"
         },
         {
           "name": "ECONOMIE_TOTALI",
           "type": "DOUBLE",
-          "role": "metric",
-          "description": ""
+          "role": "metric"
         },
         {
           "name": "ECONOMIE_TOTALI_PUBBLICHE",
           "type": "DOUBLE",
-          "role": "metric",
-          "description": ""
+          "role": "metric"
         },
         {
           "name": "IMPEGNI",
           "type": "DOUBLE",
-          "role": "metric",
-          "description": ""
+          "role": "metric"
         },
         {
           "name": "OC_IMPEGNI_GIURID_VINCOLANTI",
           "type": "DOUBLE",
-          "role": "metric",
-          "description": ""
+          "role": "metric"
         },
         {
           "name": "OC_IMPEGNI_COESIONE",
           "type": "DOUBLE",
-          "role": "metric",
-          "description": ""
+          "role": "metric"
         },
         {
           "name": "TOT_PAGAMENTI",
           "type": "DOUBLE",
-          "role": "metric",
-          "description": ""
+          "role": "metric"
         },
         {
           "name": "OC_TOT_PAGAMENTI_BENEFICIARI",
           "type": "DOUBLE",
-          "role": "metric",
-          "description": ""
+          "role": "metric"
         },
         {
           "name": "OC_PAGAMENTI_COESIONE",
           "type": "DOUBLE",
-          "role": "metric",
-          "description": ""
+          "role": "metric"
         },
         {
           "name": "OC_FLAG_AGGREGATO",
           "type": "INTEGER",
-          "role": "metric",
-          "description": ""
+          "role": "metric"
         },
         {
           "name": "OC_PROGETTO_AGGREGATO",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "DATA_AGGIORNAMENTO",
           "type": "INTEGER",
-          "role": "metric",
-          "description": ""
+          "role": "metric"
         }
       ],
-      "location": {
-        "type": "gcs",
-        "path": "gs://dataciviclab-clean/open-coesione/opencoesione_progetti/2026/opencoesione_progetti_2026_clean.parquet",
-        "multi_file": false
-      },
-      "stage": "incubating",
       "mart_refs": [
         "opencoesione_progetti__mart_tema_ciclo",
         "opencoesione_progetti__mart_stato_ciclo",
         "opencoesione_progetti__mart_sll",
         "opencoesione_progetti__mart_ciclo",
         "opencoesione_progetti__mart_macroarea_ciclo"
-      ]
+      ],
+      "last_run": {
+        "at": "2026-11-25T00:22:14.749180+00:00",
+        "year": 2026,
+        "status": "SUCCESS"
+      }
     },
     {
       "slug": "opencoesione_progetti_esteso",
       "name": "Opencoesione Progetti Esteso",
-      "description": "",
-      "source": "",
       "source_id": "opencoesione",
-      "period": {
-        "start": 2021,
-        "end": 2027
-      },
       "tags": [
         "finanza-pubblica",
         "opencoesione",
@@ -862,505 +755,428 @@
         "esteso"
       ],
       "category": "finanza-pubblica",
+      "period": {
+        "start": 2021,
+        "end": 2027
+      },
+      "partitions": {
+        "2026": 131350
+      },
       "columns": [
         {
           "name": "COD_LOCALE_PROGETTO",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "CUP",
           "type": "VARCHAR",
           "role": "dimension",
-          "description": "",
           "semantic_type": "cup_code"
         },
         {
           "name": "OC_LINK",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "OC_TITOLO_PROGETTO",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "OC_SINTESI_PROGETTO",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "OC_COD_CICLO",
           "type": "INTEGER",
-          "role": "metric",
-          "description": ""
+          "role": "metric"
         },
         {
           "name": "OC_DESCR_CICLO",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "OC_COD_TEMA_SINTETICO",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "OC_TEMA_SINTETICO",
           "type": "VARCHAR",
           "role": "dimension",
-          "description": "",
           "semantic_type": "policy_code"
         },
         {
           "name": "COD_GRANDE_PROGETTO",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "DESCRIZIONE_GRANDE_PROGETTO",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "OC_COD_FONTE",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "OC_DESCR_FONTE",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "FONDO_COMUNITARIO",
           "type": "VARCHAR",
           "role": "dimension",
-          "description": "",
           "semantic_type": "fondo_code"
         },
         {
           "name": "OC_CODICE_PROGRAMMA",
           "type": "VARCHAR",
           "role": "dimension",
-          "description": "",
           "semantic_type": "programma_code"
         },
         {
           "name": "OC_DESCRIZIONE_PROGRAMMA",
           "type": "VARCHAR",
           "role": "dimension",
-          "description": "",
           "semantic_type": "obiettivo_code"
         },
         {
           "name": "COD_OB_TEMATICO",
           "type": "VARCHAR",
           "role": "dimension",
-          "description": "",
           "semantic_type": "policy_code"
         },
         {
           "name": "DESCR_OB_TEMATICO",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "COD_PRIORITA_INVEST",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "DESCR_PRIORITA_INVEST",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "OC_COD_CATEGORIA_SPESA",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "OC_DESCR_CATEGORIA_SPESA",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "OC_ARTICOLAZIONE_PROGRAMMA",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "OC_COD_ARTICOLAZ_PROGRAMMA",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "OC_DESCR_ARTICOLAZ_PROGRAMMA",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "OC_SUBARTICOLAZIONE_PROGRAMMA",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "OC_COD_SUBARTICOLAZ_PROGRAMMA",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "OC_DESCR_SUBARTICOLAZ_PROGRAMMA",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "CUP_COD_NATURA",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "CUP_DESCR_NATURA",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "CUP_COD_SETTORE",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "CUP_DESCR_SETTORE",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "CUP_COD_CATEGORIA",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "CUP_DESCR_CATEGORIA",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "OC_COD_TIPO_AIUTO",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "OC_DESCR_TIPO_AIUTO",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "COD_REGIONE",
           "type": "VARCHAR",
           "role": "dimension",
-          "description": "",
           "semantic_type": "region_code"
         },
         {
           "name": "DEN_REGIONE",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "COD_PROVINCIA",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "DEN_PROVINCIA",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "COD_COMUNE",
           "type": "VARCHAR",
           "role": "dimension",
-          "description": "",
           "semantic_type": "municipality_code"
         },
         {
           "name": "DEN_COMUNE",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "OC_MACROAREA_PROGETTO",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "COD_ATECO",
           "type": "VARCHAR",
           "role": "dimension",
-          "description": "",
           "semantic_type": "ateco_code"
         },
         {
           "name": "DESCRIZIONE_ATECO",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "OC_STATO_PROGETTO",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "OC_STATO_PROCEDURALE",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "OC_STATO_FINANZIARIO",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "OC_COD_FASE_CORRENTE",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "OC_DESCR_FASE_CORRENTE",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "OC_DATA_INIZIO_PROGETTO",
           "type": "DATE",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "OC_DATA_FINE_PROGETTO_PREVISTA",
           "type": "DATE",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "OC_DATA_FINE_PROGETTO_EFFETTIVA",
           "type": "DATE",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "FINANZ_UE",
           "type": "DOUBLE",
-          "role": "metric",
-          "description": ""
+          "role": "metric"
         },
         {
           "name": "FINANZ_UE_FESR",
           "type": "DOUBLE",
-          "role": "metric",
-          "description": ""
+          "role": "metric"
         },
         {
           "name": "FINANZ_UE_FSE",
           "type": "DOUBLE",
-          "role": "metric",
-          "description": ""
+          "role": "metric"
         },
         {
           "name": "FINANZ_STATO_FSC",
           "type": "DOUBLE",
-          "role": "metric",
-          "description": ""
+          "role": "metric"
         },
         {
           "name": "FINANZ_REGIONE",
           "type": "DOUBLE",
-          "role": "metric",
-          "description": ""
+          "role": "metric"
         },
         {
           "name": "FINANZ_PROVINCIA",
           "type": "DOUBLE",
-          "role": "metric",
-          "description": ""
+          "role": "metric"
         },
         {
           "name": "FINANZ_COMUNE",
           "type": "DOUBLE",
-          "role": "metric",
-          "description": ""
+          "role": "metric"
         },
         {
           "name": "FINANZ_PRIVATO",
           "type": "DOUBLE",
-          "role": "metric",
-          "description": ""
+          "role": "metric"
         },
         {
           "name": "FINANZ_TOTALE_PUBBLICO",
           "type": "DOUBLE",
-          "role": "metric",
-          "description": ""
+          "role": "metric"
         },
         {
           "name": "OC_COSTO_COESIONE",
           "type": "DOUBLE",
-          "role": "metric",
-          "description": ""
+          "role": "metric"
         },
         {
           "name": "COSTO_REALIZZATO",
           "type": "DOUBLE",
-          "role": "metric",
-          "description": ""
+          "role": "metric"
         },
         {
           "name": "COSTO_RENDICONTABILE_UE",
           "type": "DOUBLE",
-          "role": "metric",
-          "description": ""
+          "role": "metric"
         },
         {
           "name": "IMPEGNI",
           "type": "DOUBLE",
-          "role": "metric",
-          "description": ""
+          "role": "metric"
         },
         {
           "name": "OC_IMPEGNI_COESIONE",
           "type": "DOUBLE",
-          "role": "metric",
-          "description": ""
+          "role": "metric"
         },
         {
           "name": "TOT_PAGAMENTI",
           "type": "DOUBLE",
-          "role": "metric",
-          "description": ""
+          "role": "metric"
         },
         {
           "name": "OC_TOT_PAGAMENTI_BENEFICIARI",
           "type": "DOUBLE",
-          "role": "metric",
-          "description": ""
+          "role": "metric"
         },
         {
           "name": "OC_TOT_PAGAMENTI_RENDICONTAB_UE",
           "type": "DOUBLE",
-          "role": "metric",
-          "description": ""
+          "role": "metric"
         },
         {
           "name": "OC_PAGAMENTI_COESIONE",
           "type": "DOUBLE",
-          "role": "metric",
-          "description": ""
+          "role": "metric"
         },
         {
           "name": "COD_INDICATORE_1",
           "type": "VARCHAR",
           "role": "dimension",
-          "description": "",
           "semantic_type": "indicatore_code"
         },
         {
           "name": "DESCR_INDICATORE_1",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "UNITA_MISURA_INDICATORE_1",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "PROGRAMMATO_INDICATORE_1",
           "type": "DOUBLE",
           "role": "dimension",
-          "description": "",
           "semantic_type": "target_value"
         },
         {
           "name": "REALIZZATO_INDICATORE_1",
           "type": "DOUBLE",
-          "role": "metric",
-          "description": ""
+          "role": "metric"
         },
         {
           "name": "DATA_AGGIORNAMENTO",
           "type": "DATE",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         }
       ],
-      "location": {
-        "type": "gcs",
-        "path": "gs://dataciviclab-clean/open-coesione/opencoesione_progetti_esteso/2026/opencoesione_progetti_esteso_2026_clean.parquet",
-        "multi_file": false
-      },
-      "stage": "incubating",
       "mart_refs": [
         "opencoesione_progetti_esteso__mart_tema_ciclo",
         "opencoesione_progetti_esteso__mart_geolocalizzazione",
         "opencoesione_progetti_esteso__mart_programmi",
         "opencoesione_progetti_esteso__mart_comune",
         "opencoesione_progetti_esteso__mart_stato_tema"
-      ]
+      ],
+      "last_run": {
+        "at": "2026-11-25T00:22:08.812780+00:00",
+        "year": 2026,
+        "status": "SUCCESS"
+      }
     },
     {
       "slug": "opencoesione_soggetti",
       "name": "Opencoesione Soggetti",
-      "description": "",
-      "source": "",
       "source_id": "opencoesione",
-      "period": {
-        "start": 2007,
-        "end": 2027
-      },
       "tags": [
         "finanza-pubblica",
         "opencoesione",
@@ -1368,149 +1184,134 @@
         "beneficiari"
       ],
       "category": "finanza-pubblica",
+      "period": {
+        "start": 2007,
+        "end": 2027
+      },
+      "partitions": {
+        "2026": 7234741
+      },
       "columns": [
         {
           "name": "COD_LOCALE_PROGETTO",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "SOGG_COD_RUOLO",
           "type": "BIGINT",
-          "role": "metric",
-          "description": ""
+          "role": "metric"
         },
         {
           "name": "SOGG_DESCR_RUOLO",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "SOGG_PROGR_RUOLO",
           "type": "BIGINT",
-          "role": "metric",
-          "description": ""
+          "role": "metric"
         },
         {
           "name": "OC_CODICE_FISCALE_SOGG",
           "type": "VARCHAR",
           "role": "dimension",
-          "description": "",
           "semantic_type": "fiscal_code"
         },
         {
           "name": "OC_DENOMINAZIONE_SOGG",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "COD_FORMA_GIURIDICA_SOGG",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "DESCR_FORMA_GIURIDICA_SOGG",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "COD_COMUNE_SEDE_SOGG",
           "type": "VARCHAR",
           "role": "dimension",
-          "description": "",
           "semantic_type": "municipality_code"
         },
         {
           "name": "INDIRIZZO_SOGG",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "CAP_SOGG",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "COD_ATECO_SOGG",
           "type": "VARCHAR",
           "role": "dimension",
-          "description": "",
           "semantic_type": "ateco_code"
         },
         {
           "name": "DESCRIZIONE_ATECO_SOGG",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "COD_ADDETTI_SOGG",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "DESCR_ADDETTI_SOGG",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "COD_DIMENSIONE_SOGG",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "DESCR_DIMENSIONE_SOGG",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "CODICE_FISCALE_SOGGETTO",
           "type": "VARCHAR",
           "role": "dimension",
-          "description": "",
           "semantic_type": "fiscal_code"
         },
         {
           "name": "DENOMINAZIONE_SOGGETTO",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "OC_COD_ENTE_BDAP",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         },
         {
           "name": "OC_COD_ENTE_IPA",
           "type": "VARCHAR",
-          "role": "dimension",
-          "description": ""
+          "role": "dimension"
         }
       ],
-      "location": {
-        "type": "gcs",
-        "path": "gs://dataciviclab-clean/open-coesione/opencoesione_soggetti/2026/opencoesione_soggetti_2026_clean.parquet",
-        "multi_file": false
-      },
-      "stage": "incubating",
       "mart_refs": [
         "opencoesione_soggetti__mart_beneficiari",
         "opencoesione_soggetti__mart_soggetti_ruolo",
         "opencoesione_soggetti__mart_beneficiari_finanziamenti"
-      ]
+      ],
+      "last_run": {
+        "at": "2026-11-25T00:22:37.241780+00:00",
+        "year": 2026,
+        "status": "SUCCESS"
+      }
     }
   ],
   "marts": [
@@ -1518,846 +1319,191 @@
       "slug": "opencoesione_fasi__mart_ritardo_ciclo",
       "dataset": "opencoesione_fasi",
       "table": "mart_ritardo_ciclo",
-      "location": {
-        "type": "gcs",
-        "path": "gs://dataciviclab-mart/open-coesione/opencoesione_fasi/2026/mart_ritardo_ciclo.parquet",
-        "multi_file": false
-      }
+      "layout": "year",
+      "year": 2026
     },
     {
       "slug": "opencoesione_fasi__mart_ritardo_fase",
       "dataset": "opencoesione_fasi",
       "table": "mart_ritardo_fase",
-      "location": {
-        "type": "gcs",
-        "path": "gs://dataciviclab-mart/open-coesione/opencoesione_fasi/2026/mart_ritardo_fase.parquet",
-        "multi_file": false
-      }
+      "layout": "year",
+      "year": 2026
     },
     {
       "slug": "opencoesione_impegni__mart_impegni_anno",
       "dataset": "opencoesione_impegni",
       "table": "mart_impegni_anno",
-      "location": {
-        "type": "gcs",
-        "path": "gs://dataciviclab-mart/open-coesione/opencoesione_impegni/2026/mart_impegni_anno.parquet",
-        "multi_file": false
-      }
+      "layout": "year",
+      "year": 2026
     },
     {
       "slug": "opencoesione_impegni__mart_impegni_ciclo",
       "dataset": "opencoesione_impegni",
       "table": "mart_impegni_ciclo",
-      "location": {
-        "type": "gcs",
-        "path": "gs://dataciviclab-mart/open-coesione/opencoesione_impegni/2026/mart_impegni_ciclo.parquet",
-        "multi_file": false
-      }
+      "layout": "year",
+      "year": 2026
     },
     {
       "slug": "opencoesione_indicatori__mart_indicatori_tipo",
       "dataset": "opencoesione_indicatori",
       "table": "mart_indicatori_tipo",
-      "location": {
-        "type": "gcs",
-        "path": "gs://dataciviclab-mart/open-coesione/opencoesione_indicatori/2026/mart_indicatori_tipo.parquet",
-        "multi_file": false
-      }
+      "layout": "year",
+      "year": 2026
     },
     {
       "slug": "opencoesione_indicatori__mart_valutazione",
       "dataset": "opencoesione_indicatori",
       "table": "mart_valutazione",
-      "location": {
-        "type": "gcs",
-        "path": "gs://dataciviclab-mart/open-coesione/opencoesione_indicatori/2026/mart_valutazione.parquet",
-        "multi_file": false
-      }
+      "layout": "year",
+      "year": 2026
     },
     {
       "slug": "opencoesione_localizzazioni__mart_aree_interne",
       "dataset": "opencoesione_localizzazioni",
       "table": "mart_aree_interne",
-      "location": {
-        "type": "gcs",
-        "path": "gs://dataciviclab-mart/open-coesione/opencoesione_localizzazioni/2026/mart_aree_interne.parquet",
-        "multi_file": false
-      }
+      "layout": "year",
+      "year": 2026
     },
     {
       "slug": "opencoesione_localizzazioni__mart_comune_finanziamenti",
       "dataset": "opencoesione_localizzazioni",
       "table": "mart_comune_finanziamenti",
-      "location": {
-        "type": "gcs",
-        "path": "gs://dataciviclab-mart/open-coesione/opencoesione_localizzazioni/2026/mart_comune_finanziamenti.parquet",
-        "multi_file": false
-      }
+      "layout": "year",
+      "year": 2026
     },
     {
       "slug": "opencoesione_localizzazioni__mart_regione_provincia",
       "dataset": "opencoesione_localizzazioni",
       "table": "mart_regione_provincia",
-      "location": {
-        "type": "gcs",
-        "path": "gs://dataciviclab-mart/open-coesione/opencoesione_localizzazioni/2026/mart_regione_provincia.parquet",
-        "multi_file": false
-      }
+      "layout": "year",
+      "year": 2026
     },
     {
       "slug": "opencoesione_localizzazioni__mart_territorio",
       "dataset": "opencoesione_localizzazioni",
       "table": "mart_territorio",
-      "location": {
-        "type": "gcs",
-        "path": "gs://dataciviclab-mart/open-coesione/opencoesione_localizzazioni/2026/mart_territorio.parquet",
-        "multi_file": false
-      }
+      "layout": "year",
+      "year": 2026
     },
     {
       "slug": "opencoesione_pagamenti__mart_flusso_cassa",
       "dataset": "opencoesione_pagamenti",
       "table": "mart_flusso_cassa",
-      "location": {
-        "type": "gcs",
-        "path": "gs://dataciviclab-mart/open-coesione/opencoesione_pagamenti/2026/mart_flusso_cassa.parquet",
-        "multi_file": false
-      }
+      "layout": "year",
+      "year": 2026
     },
     {
       "slug": "opencoesione_pagamenti__mart_pagamenti_avanzamento",
       "dataset": "opencoesione_pagamenti",
       "table": "mart_pagamenti_avanzamento",
-      "location": {
-        "type": "gcs",
-        "path": "gs://dataciviclab-mart/open-coesione/opencoesione_pagamenti/2026/mart_pagamenti_avanzamento.parquet",
-        "multi_file": false
-      }
+      "layout": "year",
+      "year": 2026
     },
     {
       "slug": "opencoesione_pagamenti__mart_pagamenti_programma",
       "dataset": "opencoesione_pagamenti",
       "table": "mart_pagamenti_programma",
-      "location": {
-        "type": "gcs",
-        "path": "gs://dataciviclab-mart/open-coesione/opencoesione_pagamenti/2026/mart_pagamenti_programma.parquet",
-        "multi_file": false
-      }
+      "layout": "year",
+      "year": 2026
     },
     {
       "slug": "opencoesione_progetti__mart_ciclo",
       "dataset": "opencoesione_progetti",
       "table": "mart_ciclo",
-      "location": {
-        "type": "gcs",
-        "path": "gs://dataciviclab-mart/open-coesione/opencoesione_progetti/2026/mart_ciclo.parquet",
-        "multi_file": false
-      }
+      "layout": "year",
+      "year": 2026
     },
     {
       "slug": "opencoesione_progetti__mart_macroarea_ciclo",
       "dataset": "opencoesione_progetti",
       "table": "mart_macroarea_ciclo",
-      "location": {
-        "type": "gcs",
-        "path": "gs://dataciviclab-mart/open-coesione/opencoesione_progetti/2026/mart_macroarea_ciclo.parquet",
-        "multi_file": false
-      }
+      "layout": "year",
+      "year": 2026
     },
     {
       "slug": "opencoesione_progetti__mart_sll",
       "dataset": "opencoesione_progetti",
       "table": "mart_sll",
-      "location": {
-        "type": "gcs",
-        "path": "gs://dataciviclab-mart/open-coesione/opencoesione_progetti/2026/mart_sll.parquet",
-        "multi_file": false
-      }
+      "layout": "year",
+      "year": 2026
     },
     {
       "slug": "opencoesione_progetti__mart_stato_ciclo",
       "dataset": "opencoesione_progetti",
       "table": "mart_stato_ciclo",
-      "location": {
-        "type": "gcs",
-        "path": "gs://dataciviclab-mart/open-coesione/opencoesione_progetti/2026/mart_stato_ciclo.parquet",
-        "multi_file": false
-      }
+      "layout": "year",
+      "year": 2026
     },
     {
       "slug": "opencoesione_progetti__mart_tema_ciclo",
       "dataset": "opencoesione_progetti",
       "table": "mart_tema_ciclo",
-      "location": {
-        "type": "gcs",
-        "path": "gs://dataciviclab-mart/open-coesione/opencoesione_progetti/2026/mart_tema_ciclo.parquet",
-        "multi_file": false
-      }
+      "layout": "year",
+      "year": 2026
     },
     {
       "slug": "opencoesione_progetti_esteso__mart_comune",
       "dataset": "opencoesione_progetti_esteso",
       "table": "mart_comune",
-      "location": {
-        "type": "gcs",
-        "path": "gs://dataciviclab-mart/open-coesione/opencoesione_progetti_esteso/2026/mart_comune.parquet",
-        "multi_file": false
-      }
+      "layout": "year",
+      "year": 2026
     },
     {
       "slug": "opencoesione_progetti_esteso__mart_geolocalizzazione",
       "dataset": "opencoesione_progetti_esteso",
       "table": "mart_geolocalizzazione",
-      "location": {
-        "type": "gcs",
-        "path": "gs://dataciviclab-mart/open-coesione/opencoesione_progetti_esteso/2026/mart_geolocalizzazione.parquet",
-        "multi_file": false
-      }
+      "layout": "year",
+      "year": 2026
     },
     {
       "slug": "opencoesione_progetti_esteso__mart_programmi",
       "dataset": "opencoesione_progetti_esteso",
       "table": "mart_programmi",
-      "location": {
-        "type": "gcs",
-        "path": "gs://dataciviclab-mart/open-coesione/opencoesione_progetti_esteso/2026/mart_programmi.parquet",
-        "multi_file": false
-      }
+      "layout": "year",
+      "year": 2026
     },
     {
       "slug": "opencoesione_progetti_esteso__mart_stato_tema",
       "dataset": "opencoesione_progetti_esteso",
       "table": "mart_stato_tema",
-      "location": {
-        "type": "gcs",
-        "path": "gs://dataciviclab-mart/open-coesione/opencoesione_progetti_esteso/2026/mart_stato_tema.parquet",
-        "multi_file": false
-      }
+      "layout": "year",
+      "year": 2026
     },
     {
       "slug": "opencoesione_progetti_esteso__mart_tema_ciclo",
       "dataset": "opencoesione_progetti_esteso",
       "table": "mart_tema_ciclo",
-      "location": {
-        "type": "gcs",
-        "path": "gs://dataciviclab-mart/open-coesione/opencoesione_progetti_esteso/2026/mart_tema_ciclo.parquet",
-        "multi_file": false
-      }
+      "layout": "year",
+      "year": 2026
     },
     {
       "slug": "opencoesione_soggetti__mart_beneficiari",
       "dataset": "opencoesione_soggetti",
       "table": "mart_beneficiari",
-      "location": {
-        "type": "gcs",
-        "path": "gs://dataciviclab-mart/open-coesione/opencoesione_soggetti/2026/mart_beneficiari.parquet",
-        "multi_file": false
-      }
+      "layout": "year",
+      "year": 2026,
+      "primary_key": [
+        "codice_fiscale"
+      ]
     },
     {
       "slug": "opencoesione_soggetti__mart_beneficiari_finanziamenti",
       "dataset": "opencoesione_soggetti",
       "table": "mart_beneficiari_finanziamenti",
-      "location": {
-        "type": "gcs",
-        "path": "gs://dataciviclab-mart/open-coesione/opencoesione_soggetti/2026/mart_beneficiari_finanziamenti.parquet",
-        "multi_file": false
-      }
+      "layout": "year",
+      "year": 2026,
+      "primary_key": [
+        "codice_fiscale"
+      ]
     },
     {
       "slug": "opencoesione_soggetti__mart_soggetti_ruolo",
       "dataset": "opencoesione_soggetti",
       "table": "mart_soggetti_ruolo",
-      "location": {
-        "type": "gcs",
-        "path": "gs://dataciviclab-mart/open-coesione/opencoesione_soggetti/2026/mart_soggetti_ruolo.parquet",
-        "multi_file": false
-      }
+      "layout": "year",
+      "year": 2026
     }
   ],
-  "signals": [
-    {
-      "id": "opencoesione_fasi",
-      "source_id": "opencoesione",
-      "status": "ok",
-      "label": "opencoesione_fasi",
-      "detail": "anno 2026 — mart: si",
-      "action": "",
-      "run": {
-        "run_id": "20261101T124353Z_f64ab95b",
-        "year": 2026,
-        "status": "SUCCESS",
-        "quality_score": {
-          "raw": 100,
-          "clean": 100,
-          "mart": 100
-        },
-        "output_rows": {
-          "clean": 4904826,
-          "mart": 92
-        },
-        "output_bytes": {
-          "raw": 33367767,
-          "clean": 27891051,
-          "mart": 7528
-        },
-        "started_at": "2026-11-01T12:43:53.482036+00:00",
-        "finished_at": "2026-11-01T12:44:01.179427+00:00",
-        "duration_seconds": 7.697
-      }
-    },
-    {
-      "id": "opencoesione_impegni",
-      "source_id": "opencoesione",
-      "status": "ok",
-      "label": "opencoesione_impegni",
-      "detail": "anno 2026 — mart: si",
-      "action": "",
-      "run": {
-        "run_id": "20261101T124401Z_cf95da93",
-        "year": 2026,
-        "status": "SUCCESS",
-        "quality_score": {
-          "raw": 100,
-          "clean": 100,
-          "mart": 100
-        },
-        "output_rows": {
-          "clean": 2741488,
-          "mart": 153
-        },
-        "output_bytes": {
-          "raw": 21221846,
-          "clean": 16240887,
-          "mart": 9054
-        },
-        "started_at": "2026-11-01T12:44:01.947435+00:00",
-        "finished_at": "2026-11-01T12:44:05.989492+00:00",
-        "duration_seconds": 4.042
-      }
-    },
-    {
-      "id": "opencoesione_indicatori",
-      "source_id": "opencoesione",
-      "status": "ok",
-      "label": "opencoesione_indicatori",
-      "detail": "anno 2026 — mart: si",
-      "action": "",
-      "run": {
-        "run_id": "20261101T124406Z_83d7692e",
-        "year": 2026,
-        "status": "SUCCESS",
-        "quality_score": {
-          "raw": 100,
-          "clean": 100,
-          "mart": 100
-        },
-        "output_rows": {
-          "clean": 3690525,
-          "mart": 79
-        },
-        "output_bytes": {
-          "raw": 13213715,
-          "clean": 9309048,
-          "mart": 6133
-        },
-        "started_at": "2026-11-01T12:44:06.982951+00:00",
-        "finished_at": "2026-11-01T12:44:11.299427+00:00",
-        "duration_seconds": 4.316
-      }
-    },
-    {
-      "id": "opencoesione_localizzazioni",
-      "source_id": "opencoesione",
-      "status": "ok",
-      "label": "opencoesione_localizzazioni",
-      "detail": "anno 2026 — mart: si",
-      "action": "",
-      "run": {
-        "run_id": "20261101T124412Z_534430d7",
-        "year": 2026,
-        "status": "SUCCESS",
-        "quality_score": {
-          "raw": 100,
-          "clean": 95,
-          "mart": 100
-        },
-        "output_rows": {
-          "clean": 2442456,
-          "mart": 16178
-        },
-        "output_bytes": {
-          "raw": 57995921,
-          "clean": 54788610,
-          "mart": 512250
-        },
-        "started_at": "2026-11-01T12:44:12.561084+00:00",
-        "finished_at": "2026-11-01T12:44:21.727889+00:00",
-        "duration_seconds": 9.167
-      }
-    },
-    {
-      "id": "opencoesione_pagamenti",
-      "source_id": "opencoesione",
-      "status": "ok",
-      "label": "opencoesione_pagamenti",
-      "detail": "anno 2026 — mart: si",
-      "action": "",
-      "run": {
-        "run_id": "20261101T124422Z_008af099",
-        "year": 2026,
-        "status": "SUCCESS",
-        "quality_score": {
-          "raw": 100,
-          "clean": 100,
-          "mart": 100
-        },
-        "output_rows": {
-          "clean": 5632379,
-          "mart": 659
-        },
-        "output_bytes": {
-          "raw": 64991769,
-          "clean": 49181197,
-          "mart": 24872
-        },
-        "started_at": "2026-11-01T12:44:22.478675+00:00",
-        "finished_at": "2026-11-01T12:44:30.662339+00:00",
-        "duration_seconds": 8.184
-      }
-    },
-    {
-      "id": "opencoesione_progetti",
-      "source_id": "opencoesione",
-      "status": "ok",
-      "label": "opencoesione_progetti",
-      "detail": "anno 2026 — mart: si",
-      "action": "",
-      "run": {
-        "run_id": "20261101T124436Z_c073703b",
-        "year": 2026,
-        "status": "SUCCESS",
-        "quality_score": {
-          "raw": 100,
-          "clean": 95,
-          "mart": 100
-        },
-        "output_rows": {
-          "clean": 2331215,
-          "mart": 779
-        },
-        "output_bytes": {
-          "raw": 241629359,
-          "clean": 185225589,
-          "mart": 66365
-        },
-        "started_at": "2026-11-01T12:44:36.516689+00:00",
-        "finished_at": "2026-11-01T12:44:57.828305+00:00",
-        "duration_seconds": 21.312
-      }
-    },
-    {
-      "id": "opencoesione_progetti_esteso",
-      "source_id": "opencoesione",
-      "status": "ok",
-      "label": "opencoesione_progetti_esteso",
-      "detail": "anno 2026 — mart: si",
-      "action": "",
-      "run": {
-        "run_id": "20261101T124431Z_242d464a",
-        "year": 2026,
-        "status": "SUCCESS",
-        "quality_score": {
-          "raw": 100,
-          "clean": 85,
-          "mart": 100
-        },
-        "output_rows": {
-          "clean": 130462,
-          "mart": 7112
-        },
-        "output_bytes": {
-          "raw": 17587198,
-          "clean": 10043116,
-          "mart": 317297
-        },
-        "started_at": "2026-11-01T12:44:31.679576+00:00",
-        "finished_at": "2026-11-01T12:44:35.233355+00:00",
-        "duration_seconds": 3.554
-      }
-    },
-    {
-      "id": "opencoesione_soggetti",
-      "source_id": "opencoesione",
-      "status": "ok",
-      "label": "opencoesione_soggetti",
-      "detail": "anno 2026 — mart: si",
-      "action": "",
-      "run": {
-        "run_id": "20261101T124458Z_e83683cf",
-        "year": 2026,
-        "status": "SUCCESS",
-        "quality_score": {
-          "raw": 100,
-          "clean": 95,
-          "mart": 100
-        },
-        "output_rows": {
-          "clean": 7219748,
-          "mart": 852272
-        },
-        "output_bytes": {
-          "raw": 104718095,
-          "clean": 88580669,
-          "mart": 21156161
-        },
-        "started_at": "2026-11-01T12:44:58.886211+00:00",
-        "finished_at": "2026-11-01T12:45:17.525302+00:00",
-        "duration_seconds": 18.639
-      }
-    }
-  ],
-  "codelists": [],
-  "entities": {
-    "entities": {
-      "Attività economica": {
-        "entity": "Attività economica",
-        "label": "Attività economica",
-        "datasets": [
-          {
-            "slug": "opencoesione_progetti",
-            "name": "Opencoesione Progetti",
-            "column": "COD_ATECO",
-            "semantic_type": "ateco_code"
-          },
-          {
-            "slug": "opencoesione_progetti_esteso",
-            "name": "Opencoesione Progetti Esteso",
-            "column": "COD_ATECO",
-            "semantic_type": "ateco_code"
-          },
-          {
-            "slug": "opencoesione_soggetti",
-            "name": "Opencoesione Soggetti",
-            "column": "COD_ATECO_SOGG",
-            "semantic_type": "ateco_code"
-          }
-        ],
-        "types": {
-          "ateco_code": 3
-        }
-      },
-      "Comune": {
-        "entity": "Comune",
-        "label": "Comune (ISTAT)",
-        "datasets": [
-          {
-            "slug": "opencoesione_localizzazioni",
-            "name": "Opencoesione Localizzazioni",
-            "column": "COD_COMUNE",
-            "semantic_type": "municipality_code"
-          },
-          {
-            "slug": "opencoesione_progetti_esteso",
-            "name": "Opencoesione Progetti Esteso",
-            "column": "COD_COMUNE",
-            "semantic_type": "municipality_code"
-          },
-          {
-            "slug": "opencoesione_soggetti",
-            "name": "Opencoesione Soggetti",
-            "column": "COD_COMUNE_SEDE_SOGG",
-            "semantic_type": "municipality_code"
-          }
-        ],
-        "types": {
-          "municipality_code": 3
-        }
-      },
-      "Ente (o Impresa)": {
-        "entity": "Ente (o Impresa)",
-        "label": "Ente (o Impresa)",
-        "datasets": [
-          {
-            "slug": "opencoesione_soggetti",
-            "name": "Opencoesione Soggetti",
-            "column": "OC_CODICE_FISCALE_SOGG",
-            "semantic_type": "fiscal_code"
-          },
-          {
-            "slug": "opencoesione_soggetti",
-            "name": "Opencoesione Soggetti",
-            "column": "CODICE_FISCALE_SOGGETTO",
-            "semantic_type": "fiscal_code"
-          }
-        ],
-        "types": {
-          "fiscal_code": 2
-        }
-      },
-      "Fondo": {
-        "entity": "Fondo",
-        "label": "Fondo",
-        "datasets": [
-          {
-            "slug": "opencoesione_progetti_esteso",
-            "name": "Opencoesione Progetti Esteso",
-            "column": "FONDO_COMUNITARIO",
-            "semantic_type": "fondo_code"
-          }
-        ],
-        "types": {
-          "fondo_code": 1
-        }
-      },
-      "Indicatore": {
-        "entity": "Indicatore",
-        "label": "Indicatore",
-        "datasets": [
-          {
-            "slug": "opencoesione_indicatori",
-            "name": "Opencoesione Indicatori",
-            "column": "COD_INDICATORE",
-            "semantic_type": "indicatore_code"
-          },
-          {
-            "slug": "opencoesione_progetti_esteso",
-            "name": "Opencoesione Progetti Esteso",
-            "column": "COD_INDICATORE_1",
-            "semantic_type": "indicatore_code"
-          }
-        ],
-        "types": {
-          "indicatore_code": 2
-        }
-      },
-      "Obiettivo": {
-        "entity": "Obiettivo",
-        "label": "Obiettivo",
-        "datasets": [
-          {
-            "slug": "opencoesione_progetti_esteso",
-            "name": "Opencoesione Progetti Esteso",
-            "column": "OC_DESCRIZIONE_PROGRAMMA",
-            "semantic_type": "obiettivo_code"
-          }
-        ],
-        "types": {
-          "obiettivo_code": 1
-        }
-      },
-      "Policy": {
-        "entity": "Policy",
-        "label": "Policy",
-        "datasets": [
-          {
-            "slug": "opencoesione_progetti",
-            "name": "Opencoesione Progetti",
-            "column": "OC_TEMA_SINTETICO",
-            "semantic_type": "policy_code"
-          },
-          {
-            "slug": "opencoesione_progetti_esteso",
-            "name": "Opencoesione Progetti Esteso",
-            "column": "OC_TEMA_SINTETICO",
-            "semantic_type": "policy_code"
-          },
-          {
-            "slug": "opencoesione_progetti_esteso",
-            "name": "Opencoesione Progetti Esteso",
-            "column": "COD_OB_TEMATICO",
-            "semantic_type": "policy_code"
-          }
-        ],
-        "types": {
-          "policy_code": 3
-        }
-      },
-      "Progetto": {
-        "entity": "Progetto",
-        "label": "Progetto",
-        "datasets": [
-          {
-            "slug": "opencoesione_progetti",
-            "name": "Opencoesione Progetti",
-            "column": "CUP",
-            "semantic_type": "cup_code"
-          },
-          {
-            "slug": "opencoesione_progetti_esteso",
-            "name": "Opencoesione Progetti Esteso",
-            "column": "CUP",
-            "semantic_type": "cup_code"
-          }
-        ],
-        "types": {
-          "cup_code": 2
-        }
-      },
-      "Programma": {
-        "entity": "Programma",
-        "label": "Programma",
-        "datasets": [
-          {
-            "slug": "opencoesione_pagamenti",
-            "name": "Opencoesione Pagamenti",
-            "column": "CODICE_PROGRAMMA",
-            "semantic_type": "programma_code"
-          },
-          {
-            "slug": "opencoesione_pagamenti",
-            "name": "Opencoesione Pagamenti",
-            "column": "OC_CODICE_PROGRAMMA",
-            "semantic_type": "programma_code"
-          },
-          {
-            "slug": "opencoesione_progetti_esteso",
-            "name": "Opencoesione Progetti Esteso",
-            "column": "OC_CODICE_PROGRAMMA",
-            "semantic_type": "programma_code"
-          }
-        ],
-        "types": {
-          "programma_code": 3
-        }
-      },
-      "Regione": {
-        "entity": "Regione",
-        "label": "Regione",
-        "datasets": [
-          {
-            "slug": "opencoesione_localizzazioni",
-            "name": "Opencoesione Localizzazioni",
-            "column": "COD_REGIONE",
-            "semantic_type": "region_code"
-          },
-          {
-            "slug": "opencoesione_progetti_esteso",
-            "name": "Opencoesione Progetti Esteso",
-            "column": "COD_REGIONE",
-            "semantic_type": "region_code"
-          }
-        ],
-        "types": {
-          "region_code": 2
-        }
-      },
-      "Target": {
-        "entity": "Target",
-        "label": "Target",
-        "datasets": [
-          {
-            "slug": "opencoesione_indicatori",
-            "name": "Opencoesione Indicatori",
-            "column": "VALORE_PROGRAMMATO",
-            "semantic_type": "target_value"
-          },
-          {
-            "slug": "opencoesione_progetti_esteso",
-            "name": "Opencoesione Progetti Esteso",
-            "column": "PROGRAMMATO_INDICATORE_1",
-            "semantic_type": "target_value"
-          }
-        ],
-        "types": {
-          "target_value": 2
-        }
-      },
-      "Tempo": {
-        "entity": "Tempo",
-        "label": "Tempo / data",
-        "datasets": [
-          {
-            "slug": "opencoesione_impegni",
-            "name": "Opencoesione Impegni",
-            "column": "anno",
-            "semantic_type": "year"
-          }
-        ],
-        "types": {
-          "year": 1
-        }
-      }
-    },
-    "bridges": [
-      {
-        "from": {
-          "entity": "Indicatore",
-          "dataset": "opencoesione_indicatori",
-          "via": "indicatore_code"
-        },
-        "to": {
-          "entity": "Progetto",
-          "bridge": "pnrr_indicatori_target",
-          "on": "cup",
-          "semantic_type": "cup_code"
-        }
-      },
-      {
-        "from": {
-          "entity": "Programma",
-          "dataset": "opencoesione_pagamenti",
-          "via": "programma_code"
-        },
-        "to": {
-          "entity": "Progetto",
-          "bridge": "opencoesione_progetti_esteso",
-          "on": "CUP",
-          "semantic_type": "cup_code"
-        }
-      },
-      {
-        "from": {
-          "entity": "Progetto",
-          "dataset": "opencoesione_progetti",
-          "via": "cup_code"
-        },
-        "to": {
-          "entity": "Comune",
-          "bridge": "anac_cup",
-          "on": "cup",
-          "semantic_type": "municipality_code"
-        }
-      },
-      {
-        "from": {
-          "entity": "Progetto",
-          "dataset": "opencoesione_progetti_esteso",
-          "via": "cup_code"
-        },
-        "to": {
-          "entity": "Comune",
-          "bridge": "anac_cup",
-          "on": "cup",
-          "semantic_type": "municipality_code"
-        }
-      },
-      {
-        "from": {
-          "entity": "Programma",
-          "dataset": "opencoesione_progetti_esteso",
-          "via": "programma_code"
-        },
-        "to": {
-          "entity": "Progetto",
-          "bridge": "opencoesione_progetti_esteso",
-          "on": "CUP",
-          "semantic_type": "cup_code"
-        }
-      },
-      {
-        "from": {
-          "entity": "Indicatore",
-          "dataset": "opencoesione_progetti_esteso",
-          "via": "indicatore_code"
-        },
-        "to": {
-          "entity": "Progetto",
-          "bridge": "pnrr_indicatori_target",
-          "on": "cup",
-          "semantic_type": "cup_code"
-        }
-      }
-    ]
-  }
+  "checks": [],
+  "codelists": []
 }
