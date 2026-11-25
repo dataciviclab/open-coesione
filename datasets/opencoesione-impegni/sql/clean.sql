@@ -1,5 +1,5 @@
 -- clean.sql — OpenCoesione impegni (storico)
--- Input: raw_input (impegni_20260630.parquet)
+-- Input: raw_input (impegni_20260831.parquet)
 -- OC_DATA_IMPEGNI è INTEGER YYYYMMDD → CAST anno intero.
 
 SELECT

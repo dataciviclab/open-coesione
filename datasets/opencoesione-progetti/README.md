@@ -26,10 +26,10 @@ Gli 130K COD di esteso sono un sottoinsieme di questo flat (ciclo 2021-2027).
 
 - **Ente**: PCM — Dipartimento Politiche di Coesione / OpenCoesione
 - **Portale**: [opencoesione.gov.it/opendata](https://opencoesione.gov.it/it/opendata/)
-- **File**: `progetti_20260630.parquet` (2.331.215 righe, 97 colonne)
-- **URL**: `https://opencoesione.gov.it/media/open_data/progetti_20260630.parquet`
+- **File**: `progetti_20260831.parquet` (2.341.583 righe, 97 colonne)
+- **URL**: `https://opencoesione.gov.it/media/open_data/progetti_20260831.parquet`
 - **Licenza**: CC BY 4.0
-- **Aggiornamento fonte**: bimestrale (questo config punta al dump 30/06/2026)
+- **Aggiornamento fonte**: bimestrale (questo config punta al dump 31/08/2026)
 - **Issue intake storica**: dataset-incubator #440 (candidato migrato qui)
 
 ## Cosa contiene

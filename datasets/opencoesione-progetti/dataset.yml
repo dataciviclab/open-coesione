@@ -16,7 +16,7 @@ raw:
     - name: "progetti_parquet"
       type: "http_file"
       args:
-        url: "https://opencoesione.gov.it/media/open_data/progetti_20260630.parquet"
+        url: "https://opencoesione.gov.it/media/open_data/progetti_20260831.parquet"
         filename: "progetti.parquet"
       primary: true
 

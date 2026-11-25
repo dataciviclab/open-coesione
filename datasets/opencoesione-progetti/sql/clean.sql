@@ -1,10 +1,11 @@
 -- clean.sql — OpenCoesione Progetti (base dati, 4 cicli di programmazione)
--- Input: raw_input (progetti_20260630.parquet)
+-- Input: raw_input (progetti_20260831.parquet)
 -- Output: progetti puliti con titolo, ciclo, macroarea, finanziamenti e stati
 --
 -- Nota: da dump 20260630 la macroarea è OC_MACROAREA_PROGETTO
--- (in 20260430 si chiamava OC_MACROAREA). Non filtrare su macroarea:
--- i progetti con macroarea null (~13k, ~€2 mld UE) restano nel clean.
+-- (in 20260430 si chiamava OC_MACROAREA). Il dump 20260831 ha lo stesso
+-- schema. Non filtrare su macroarea: i progetti con macroarea null
+-- (~13k, ~€2 mld UE) restano nel clean.
 
 SELECT
   -- Identificativi

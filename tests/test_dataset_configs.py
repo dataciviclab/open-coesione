@@ -72,7 +72,7 @@ def test_support_configs_resolve() -> None:
 
 
 def test_no_legacy_oc_macroarea_in_sql() -> None:
-    """Il dump 20260630 usa OC_MACROAREA_PROGETTO, non la colonna legacy OC_MACROAREA."""
+    """Il dump corrente usa OC_MACROAREA_PROGETTO, non la colonna legacy OC_MACROAREA."""
     import re
 
     pattern = re.compile(r"\bOC_MACROAREA\b(?!_)")

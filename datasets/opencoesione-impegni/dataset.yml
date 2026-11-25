@@ -19,7 +19,7 @@ raw:
     - name: "impegni_parquet"
       type: "http_file"
       args:
-        url: "https://opencoesione.gov.it/media/open_data/impegni_20260630.parquet"
+        url: "https://opencoesione.gov.it/media/open_data/impegni_20260831.parquet"
         filename: "impegni.parquet"
       primary: true
 

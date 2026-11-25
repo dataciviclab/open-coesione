@@ -6,7 +6,7 @@ Fasi procedurali dei progetti coesione — **ritardo e avanzamento**.
 
 Una riga per progetto × fase (attribuzione, progettazione, esecuzione, collaudo, …) con date previste ed effettive.
 
-- **Fonte**: `fasi_20260630.parquet` (~4,9M righe)
+- **Fonte**: `fasi_20260831.parquet` (~4,9M righe)
 - **Join**: `COD_LOCALE_PROGETTO` → `opencoesione-progetti` (support)
 - **Ritardo**: `DATE_DIFF` tra fine prevista ed effettiva (giorni)
 
