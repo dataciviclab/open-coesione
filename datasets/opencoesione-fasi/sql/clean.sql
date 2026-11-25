@@ -1,5 +1,5 @@
 -- clean.sql — OpenCoesione fasi procedurali
--- Input: raw_input (fasi_20260630.parquet)
+-- Input: raw_input (fasi_20260831.parquet)
 -- Date INTEGER YYYYMMDD → DATE via strptime (CAST diretto fallisce in DuckDB).
 
 SELECT

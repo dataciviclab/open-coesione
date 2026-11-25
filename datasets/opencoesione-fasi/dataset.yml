@@ -19,7 +19,7 @@ raw:
     - name: "fasi_parquet"
       type: "http_file"
       args:
-        url: "https://opencoesione.gov.it/media/open_data/fasi_20260630.parquet"
+        url: "https://opencoesione.gov.it/media/open_data/fasi_20260831.parquet"
         filename: "fasi.parquet"
       primary: true
 

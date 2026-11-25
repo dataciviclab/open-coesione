@@ -6,7 +6,7 @@ Serie storica degli **impegni** dei progetti coesione.
 
 Una riga per impegno (data, importo, tipo) collegato al progetto.
 
-- **Fonte**: `impegni_20260630.parquet` (~2,7M righe)
+- **Fonte**: `impegni_20260831.parquet` (~2,7M righe)
 - **Join**: `COD_LOCALE_PROGETTO` → `opencoesione-progetti` (support)
 - **Anno**: `CAST(OC_DATA_IMPEGNI/10000 AS INTEGER)`
 

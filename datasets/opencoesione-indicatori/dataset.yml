@@ -16,7 +16,7 @@ raw:
     - name: "indicatori_parquet"
       type: "http_file"
       args:
-        url: "https://opencoesione.gov.it/media/open_data/indicatori_20260630.parquet"
+        url: "https://opencoesione.gov.it/media/open_data/indicatori_20260831.parquet"
         filename: "indicatori.parquet"
       primary: true
 

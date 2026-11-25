@@ -10,9 +10,10 @@
 ## Fonte
 
 - **Ente**: PCM — Dipartimento Politiche di Coesione / OpenCoesione
-- **File attuale**: `progetti_20260630.parquet` (2.331.215 righe, 97 colonne)
-- **URL**: `https://opencoesione.gov.it/media/open_data/progetti_20260630.parquet`
-- **Dump precedente** (obsoleto, 404): `progetti_20260430.parquet` (2.320.817 righe, 95 colonne)
+- **File attuale**: `progetti_20260831.parquet` (2.341.583 righe, 97 colonne, schema invariato)
+- **URL**: `https://opencoesione.gov.it/media/open_data/progetti_20260831.parquet`
+- **Dump precedente** (obsoleto, 404): `progetti_20260630.parquet` (2.331.215 righe, 97 colonne)
+- **Dump 20260430** (storico, 404): 95 colonne — da cui il break documentato sotto
 - **Issue intake**: dataset-incubator #440
 
 ## Break di schema 20260430 → 20260630
@@ -40,7 +41,7 @@ Oggi: solo `COD_LOCALE_PROGETTO` non null. Macroarea/tema null restano nel clean
 
 ## Prossimi passi
 
-- [x] `dataset.yml` + clean/mart allineati a 20260630
+- [x] `dataset.yml` + clean/mart allineati al dump 20260831 (schema invariato dal 20260630)
 - [x] `mart_tema_ciclo` rinominato da `mart.sql` (convenzione repo)
 - [ ] Dopo merge: verificare registry post-merge e path GCS `open-coesione/opencoesione_progetti/`
 - [ ] Follow-up: migrare data-explorer e downstream dal path DI legacy
